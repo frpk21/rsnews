@@ -4,6 +4,7 @@ from catalogos.models import Categoria, SubCategoria
 
 from django.forms.models import inlineformset_factory
 
+
 class CategoriaForm(forms.ModelForm):
     class Meta:
         model=Categoria

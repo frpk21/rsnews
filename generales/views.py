@@ -15,7 +15,12 @@ from django.views.generic.list import ListView
 from django.shortcuts import render
 from django.db import connections
 from collections import namedtuple
+from django.http import JsonResponse
+from datetime import datetime, timedelta
 from generales.forms import MesAnoForm
+from noticias.models import Noticias
+from catalogos.models import Categoria, SubCategoria
+from noticias.forms import SuscribirseForm
 
 
 class SinPrivilegios(PermissionRequiredMixin):
@@ -31,9 +36,118 @@ class HomePage(generic.View):
     def get(self, request, *args, **kwargs):
         return HttpResponse('Pagina de Inicio')
 
-class Home(LoginRequiredMixin, generic.TemplateView):
-    template_name='generales/home.html'
-    login_url='generales:login'
+#class Home(LoginRequiredMixin, generic.TemplateView):
+#    template_name='generales/home.html'
+#    login_url='generales:login'
+
+def HomeView(request):
+    template_name = 'generales/home.html'
+    hoy = date.today()
+    titulares1 = Noticias.objects.filter(orden_destacado=0, subcategoria__id=1).exclude(subcategoria=12).order_by('-id')[:2]
+    titulares2 = Noticias.objects.filter(orden_destacado=0, subcategoria__id=2).order_by('-id')[:4]
+    titulares3 = Noticias.objects.filter(orden_destacado=0, subcategoria__categoria__gte=2).exclude(subcategoria=12).order_by('-id')[:4]
+    ultima_hora = Noticias.objects.filter(ultima_hora=True).order_by('-id')[:4]
+    virales = Noticias.objects.filter(viral=True, ultima_hora=False, ).order_by('-id')[:5]
+    deportes1 = Noticias.objects.filter(orden_destacado=1, ultima_hora=False, subcategoria__categoria=3).last()
+    deportes2 = Noticias.objects.filter(orden_destacado=2, ultima_hora=False, subcategoria__categoria=3).last()
+    deportes3 = Noticias.objects.filter(orden_destacado__gte=3, ultima_hora=False, subcategoria__categoria=3).last()
+    deportes4 = Noticias.objects.filter(orden_destacado=4, ultima_hora=False, subcategoria__categoria=3).last()
+    loquepasa = Noticias.objects.filter(viral=False, ultima_hora=False, subcategoria__categoria=1).exclude(fecha_inicio_publicacion__gte=hoy).order_by('-id')[:8]
+    loquesuena = Noticias.objects.filter(viral=False, ultima_hora=False, subcategoria__categoria=2).exclude(fecha_inicio_publicacion__gte=hoy).order_by('-id')[:8]
+    loquesemueve = Noticias.objects.filter(viral=False, ultima_hora=False, subcategoria__categoria=3).exclude(fecha_inicio_publicacion__gte=hoy).order_by('-id')[:8]
+    sonajero = Noticias.objects.filter(viral=False, ultima_hora=False, subcategoria__categoria=4).order_by('-id')[:8]
+    recientes = Noticias.objects.filter(viral=False, ultima_hora=False).exclude(subcategoria=12).order_by('-id')[:3]
+    tecno1 = Noticias.objects.filter(viral=False, ultima_hora=False, orden_destacado=0, subcategoria=12).order_by('-id')[:2]
+    tecno2 = Noticias.objects.filter(viral=False, ultima_hora=False, subcategoria=12).order_by('-id')[:4]
+    lomasvisto = Noticias.objects.filter(ultima_hora=False).order_by('-vistas')[:4]
+    populares = Noticias.objects.filter(viral=True, ultima_hora=False).order_by('-vistas')[:4]
+    if not deportes3:
+        deportes3 = Noticias.objects.filter(orden_destacado__gte=3, ultima_hora=False).last()
+    if not ultima_hora:
+        ultima_hora = Noticias.objects.all().order_by('-id')[:3]
+    categorias = Categoria.objects.all().order_by("nombre")
+    subcategorias = SubCategoria.objects.all().order_by("nombre")
+
+    context = {'hoy': hoy,
+        'tecno1': tecno1,
+        'tecno2': tecno2,
+        'lomasvisto': lomasvisto,
+        'populares': populares,
+        'recientes': recientes,
+        'titulares1': titulares1,
+        'sonajero': sonajero,
+        'loquesuena': loquesuena,
+        'loquesemueve': loquesemueve,
+        'titulares2': titulares2,
+        'titulares3': titulares3,
+        'loquepasa': loquepasa,
+        'ultima_hora': ultima_hora,
+        'categorias': categorias,
+        'subcategorias': subcategorias,
+        'virales': virales,
+        'deportes1': deportes1,
+        'deportes2': deportes2,
+        'deportes3': deportes3,
+        'deportes4': deportes4
+        }
+    manana = hoy + timedelta(days=1)
+    
+
+    if request.POST.get('email'):
+        form_home = SuscribirseForm(request.POST)
+        if form_home.is_valid():
+            post = form_home.save(commit=False)
+            post.save()
+            success_url=reverse_lazy("/")
+            
+            return JsonResponse(
+                {
+                    'content': {
+                        'message': 'Gracias por suscribirse.',
+                    }
+                }
+            )
+        else:
+            return JsonResponse(
+                {
+                    'content': {
+                        'message': 'Ya ha sido registrado. Gracias!',
+                    }
+                }
+            )
+    else:
+        form_home = SuscribirseForm()
+        
+    if request.POST.get('buscar'):
+        buscar = (request.POST.get('buscar').upper())
+        template_name="generales/search.html"
+        try:
+            resultado = Noticias.objects.filter(titulo__icontains=buscar).order_by('-id')
+            #paginator5 = Paginator(resultado, 10)
+        except:
+            resultado = Noticias.objects.filter(titulo__icontains=buscar).order_by('-id')
+            #paginator5 = Paginator(resultado, 10)
+        try:
+            page = int(request.GET.get('page', '1'))
+        except ValueError:
+            page = 1
+        #try:
+        #    resultado = paginator5.page(page)
+        #except (EmptyPage, InvalidPage):
+        #    resultado = paginator5.page(paginator5.num_pages)
+
+        #context['paginator5'] = paginator5
+        context['form_search'] = resultado
+    else:
+        buscar = ''
+        resultado={}
+        template_name = "generales/home.html"
+
+    context['form_home'] = form_home
+    context['resultado'] = resultado
+
+    return render(request, template_name, context)
+
 
 class HomeSinPrivilegios(generic.TemplateView):
     template_name="generales/msg_sin_privilegios.html"

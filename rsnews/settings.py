@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'generales',
     'catalogos',
+    'noticias',
     'ckeditor',
     'multiselectfield',
     'tempus_dominus',
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'rsnews.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +78,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+            'auth_extras': 'generales.templatetags.auth_extras',
+            
+            }
         },
     },
 ]
@@ -164,7 +169,7 @@ LOGOUT_REDIRECT_URL = '/login/'
 
 ALLOWED_HOSTS = ['*']
 
-#try:
-#   exec(open(os.path.join(BASE_DIR, 'monitoreo/settings_local.py')).read())
-#except IOError:
-#   raise Exception('error reading local settings')
+try:
+   exec(open(os.path.join(BASE_DIR, 'monitoreo/settings_local.py')).read())
+except IOError:
+   raise Exception('error reading local settings')

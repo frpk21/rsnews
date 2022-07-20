@@ -1,139 +1,276 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="has-sidemenu" lang="en-US" dir="ltr">
 
-<head>
-    <meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8">
 
-    {% load staticfiles %}
+        {% load staticfiles %}
+
+        {% load auth_extras %} 
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>SISTEMA INRAI | Noticias</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/base/images/favicon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/base/images/favicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/base/images/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="/static/base/images/favicon.png">
+        <link rel="manifest" href="/static/base/assets/img/favicons/manifest.json">
+        <meta name="msapplication-TileImage" content="/static/base/images/favicon.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <link href="/static/base/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="/static/base/vendors/loaders.css/loaders.min.css" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=PT+Mono%7cPT+Serif:400,400i%7cLato:100,300,400,700,800,900" rel="stylesheet">
+        <link href="/static/base/assets/css/theme.css" rel="stylesheet" />
+        <link href="/static/base/assets/css/user.css" rel="stylesheet" />
+
+    </head>
 
 
-    <link rel="apple-touch-icon" sizes="76x76" href="/static/base/images/favicon.png" width="76px">
-    <link rel="icon" type="image/png" href="/static/base/images/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Komtroll</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="/static/base/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="/static/base/assets/demo/demo.css" rel="stylesheet" />
-    <!-- autocomplete -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-
-
-
-</head>
-
-<body>
-    <!--===============================
-	Preloading Splash Screen
-	===================================-->
-	<div class="pageLoader"></div> 
-    <div class="wrapper ">
-
-        {% block menu1 %}{% endblock menu1 %}
-
-        <div class="main-panel">
-            
-            {% block menu2 %}{% endblock menu2 %}
+    <body class="overflow-hidden-x">
+        <nav class="fancynavbar fancynavbar-expand-lg" data-zanim-lg='{"from":{"opacity":1,"x":70},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-xs='{"from":{"opacity":1,"y":-37},"to":{"opacity":1,"y":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-trigger="scroll" data-exclusive="true">
+            <div class="fancynavbar-togglerbar" data-onscroll-fade-in="data-onscroll-fade-in">
+                <a class="fancynavbar-brand" href="{% url 'generales:home' %}">
+                    <img class="fancynavbar-brand-img" src="/static/base/image/logo-blanco.png" alt="" width="30" height="30" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll" />
+                    <!--You can use icon or text logo as well-->
+                    <!--<span class='fab fa-superpowers fs-3'></span>-->
+                    <!--<span class='logo-sparrow'>S</span>-->
+                </a>
+                <div class="fancynavbar-toggler">
+                    <svg class="fancynavbar-toggler-icon" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.5}' data-zanim-trigger="scroll">
+                        <path id="path-top" d="M20,25c0,0,22,0,30,0c16,0,18.89,40.71-.15,21.75C38.7,35.65,19.9,16.8,19.9,16.8"></path>
+                        <path id="path-middle" d="M20,32h30"></path>
+                        <path id="path-bottom" d="M19.9,46.98c0,0,18.8-18.85,29.95-29.95C68.89-1.92,66,38.78,50,38.78c-8,0-30,0-30,0"></path>
+                    </svg>
+                </div>
+                <div class="fancynavbar-addon" data-zanim-lg='{"from":{"opacity":1,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll">
+                    <a class="fancynavbar-addon-item" href="#count" data-bs-toggle="modal">
+                        <span class="far fa-user"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="fancynavbar-collapse">
+                <ul class="fancynavbar-nav">
+                    <li><img class="fancynavbar-brand-img" src="/static/base/image/logo-inrainews-blanco-400px.png" alt="" width="160" /></li>
+                    <li><p>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . . . . . . . . . . . .. . . . . . . . . . . . . .</p></li>
+                <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">contenido</span></a>
+                    {% if request.user|has_group:"administradores" %}
+                        <div class="fancy-dropdown-menu">
+                            <div class="row pb-4 pt-3">
+                                <div class="col-auto">
+                                    <a class=" false fancy-dropdown-item" href="../homes/bicycle.html"> Noticias</a>
+                                    <a class=" false fancy-dropdown-item" href="../homes/bigcartel.html"> Podcast</a>
+                                    <a class=" false fancy-dropdown-item" href="../homes/cafe.html"> V&iacute;deos</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif request.user|has_group:"clientes" %}
+                    {% else %}
+                    {% endif %}
+                </li>
+                <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">cat&aacute;logo</span></a>
+                    <div class="fancy-dropdown-menu">
+                        <div class="row pb-4 pt-3">
+                            <div class="col-sm-auto pe-4">
+                                <a class=" false fancy-dropdown-item" href="../pages/404.html"> Todo</a>
+                                {% for item in categorias %}
+                                    <a class=" false fancy-dropdown-item" href="{% url 'noticias:categoria' item.id %}"> {{item.nombre}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">componentes</span></a>
+                    <div class="fancy-dropdown-menu">
+                        <div class="row pb-2 pt-3">
+                            <div class="col-sm-auto mb-3">
+                                <div class="row">
+                                    <div class="col-sm-auto pe-4">
+                                        <a class="fancy-dropdown-item text-white fw-black ls text-uppercase fs--1 mb-1" href="JavaScript:void(0)">Gr&aacute;ficos</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/accordion.html"> Accordion</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/anchor.html"> Anchor</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/backgrounds.html"> Backgrounds</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/borders.html"> Borders</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/carousel.html"> Carousel</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/colors.html"> Colors</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/cookie-notice.html"> Cookie notice</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/countdown.html"> Countdown</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/countup.html"> Countup</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/fancynav.html"> Fancynav</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/filter.html"> Filter</a>
+                                    </div>
+                                    <div class="col-sm-auto pe-4">
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/googlemap.html"> Streaming</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/icons.html"> Audio</a>
+                                        <a class=" false fancy-dropdown-item" href="../components/sparrow/inline-player.html"> V&iacute;deo</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-auto pe-3 mb-3">
+                                <a class="fancy-dropdown-item text-white fw-black ls text-uppercase fs--1 mb-1" href="JavaScript:void(0)">Marketing</a>
+                                <a class=" false fancy-dropdown-item" href="../components/bootstrap/badges.html"> Radio</a>
+                                <a class=" false fancy-dropdown-item" href="../components/bootstrap/buttons.html"> Btl</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="fancynav-item"><a class="fancynav-link" href="../pages/portfolio.html"><span class="fancynav-link-content">portafolio</span></a></li>
+                <li class="fancynav-item"><a class="fancynav-link" href="../pages/contact.html"><span class="fancynav-link-content">contacto</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- ===============================================-->
+        <!--    Main Content-->
+        <!-- ===============================================-->
+        <main class="main min-vh-100" id="top">
+            <!-- ============================================-->
+            <!-- Preloader ==================================-->
+            <div class="preloader" id="preloader">
+                <div class="loader">
+                <div class="line-scale-pulse-out-rapid">
+                    <div> </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div> </div>
+                </div>
+                </div>
+            </div>
+            <!-- ============================================-->
+            <!-- End of Preloader ===========================-->
 
             {% block contenido %}Blank{% endblock contenido %}
-            
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="float-left">
-                        <ul>
-                        <li>
-                            <a href="http://www.busycol.com" target="_blank">
-                            Nosotros
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.busycol.com" target="_blank">
-                            Servicios
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                            Términos & Privacidad
-                            </a>
-                        </li>
-                        </ul>
-                    </nav>
-                    <div class="copyright float-right">
-                        <small>
-                        &copy;
-                        <script>
-                        document.write(new Date().getFullYear())
-                        </script> BUSYCOL
-                        <a href="http://www.busycol.com" target="_blank">Creative Company</a> for a better world.</small>
+
+
+            <!-- ============================================-->
+            <!-- <section> begin ============================-->
+            <section class="bg-dark py-6 font-sans-serif" id="bicycleSignUp">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-5 pe-lg-8">
+                            <h4 class="text-300 mb-4"><img class="fancynavbar-brand-img" src="/static/base/image/logo-inrai-blanco-400px.png" alt="" width="200" /></h4><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size me-2 text-dark border rounded-circle bg-white fs-1"><i class="fab fa-facebook-f fa-stack-1x"></i></span></a><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size me-2 text-dark border rounded-circle bg-white fs-1"><i class="fab fa-instagram fa-stack-1x"></i></span></a><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size text-dark border rounded-circle bg-white fs-1"><i class="fab fa-youtube fa-stack-1x"></i></span></a>
+                            <p class="text-500 mt-4">Regístrese para recibir las últimas noticias en su correo.</p>
+                            <div class="input-group mb-3">
+                                <input class="form-control" type="text" placeholder="eMail" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                <button class="btn border border-light text-light px-4" id="button-addon2" type="button">Inscribirse</button>
+                            </div>
+                        </div>
+                        <div class="col mt-6 mt-lg-0">
+                            <div class="row">
+                                <div class="col-6 col-sm-4">
+                                    <h4 class="text-300 mb-4">contenido</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="py-1"><a class="text-500" href="#!">Noticias del D&iacute;a</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Podcast</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Tecnolog&iacute;a</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Deportes</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Internacional</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Regional</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-sm-4">
+                                    <h4 class="text-300 mb-4">emisoras</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="py-1"><a class="text-500" href="#!">Cristalina Cundinamarca 102.3FM</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Cristalina Huila 101.3FM</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">HJDOBLEK Huila 840KHZ</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Cristalina Caquet&aacute; 101.1FM</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">La Caquete&nacute;a 93.1FM</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">HJDOBLEK Pitalito 1280KHZ</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-sm-4 mt-6 mt-sm-0">
+                                    <h4 class="text-300 mb-4">compa&nacute;&iacute;a</h4>
+                                    <ul class="list-unstyled">
+                                        <li class="py-1"><a class="text-500" href="#!">Acerca de INRAI</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Agencia de Noticias</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Privacidad</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">T&eacute;rminos y Condiciones</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Soporte</a></li>
+                                        <li class="py-1"><a class="text-500" href="#!">Cont&aacute;cto</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </footer>
+            </section>
+            <!-- <section> close ============================-->
+            <!-- ============================================-->
+
+        </main>
+        <footer class="footer bg-black text-600 py-4 font-sans-serif text-center overflow-hidden" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 order-lg-2 position-relative">
+                        <a class="indicator indicator-up" href="#top">
+                            <span class="indicator-arrow indicator-arrow-one" data-zanim-xs='{"from":{"opacity":0,"y":15},"to":{"opacity":1,"y":-5,"scale":1},"ease":"Back.easeOut","duration":0.4,"delay":0.9}'></span>
+                            <span class="indicator-arrow indicator-arrow-two" data-zanim-xs='{"from":{"opacity":0,"y":15},"to":{"opacity":1,"y":-5,"scale":1},"ease":"Back.easeOut","duration":0.4,"delay":1.05}'></span>
+                        </a>
+                    </div>
+                        <div class="col-lg-4 text-lg-start mt-4 mt-lg-0">
+                            <p class="fs--1 text-uppercase ls fw-bold mb-0">Copyright &copy; <script>document.write(new Date().getFullYear())</script> INRAI</p>
+                        </div>
+                    <div class="col-lg-4 text-lg-end order-lg-2 mt-2 mt-lg-0">
+                        <p class="fs--1 text-uppercase ls fw-bold mb-0">Hecho en Colombia <span class="text-danger fas fa-heart mx-1"></span>por <a class="text-600" href="http://inrai.net/">INRAI</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    <!--===============================================-->
+    <!--    Modal for language selection-->
+    <!--===============================================-->
+    <!-- Modal-->
+    <div class="overflow-hidden">
+      <div class="modal fade fade-in" id="count" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xs mx-auto" role="document">
+          <div class="modal-content bg-black">
+            <div class="modal-body text-center p-0">
+              <button class="btn-close text-white position-absolute top-0 end-0 times-icon mt-2 me-2 p-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              <ul class="list-unstyled my-0 py-4 font-sans-serif">
+                <li><a class="text-white fw-bold pt-1 d-block" href="{% url 'generales:logout' %}">Cerrar sesi&oacute;n</a></li>
+                <li><a class="pt-1 d-block text-500" href="#!">Mensaje al Administrador</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    
 
-    <!--   Core JS Files   -->
-    <script src="/static/base/assets/js/core/jquery.min.js"></script>
-    <script src="/static/base/assets/js/core/popper.min.js"></script>
-    <script src="/static/base/assets/js/core/bootstrap-material-design.min.js"></script>
-    <script src="/static/base/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!-- Plugin for the momentJs  -->
-    <script src="/static/base/assets/js/plugins/moment.min.js"></script>
-    <!--  Plugin for Sweet Alert -->
-    <script src="/static/base/assets/js/plugins/sweetalert2.js"></script>
-    <!-- Forms Validations Plugin -->
-    <script src="/static/base/assets/js/plugins/jquery.validate.min.js"></script>
-    <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <script src="/static/base/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="/static/base/assets/js/plugins/bootstrap-selectpicker.js"></script>
-    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="/static/base/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-    <script src="/static/base/assets/js/plugins/jquery.dataTables.min.js"></script>
-    <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <script src="/static/base/assets/js/plugins/bootstrap-tagsinput.js"></script>
-    <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="/static/base/assets/js/plugins/jasny-bootstrap.min.js"></script>
-    <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="/static/base/assets/js/plugins/fullcalendar.min.js"></script>
-    <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <script src="/static/base/assets/js/plugins/jquery-jvectormap.js"></script>
-    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="/static/base/assets/js/plugins/nouislider.min.js"></script>
-    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-    <!-- Library for adding dinamically elements -->
-    <script src="/static/base/assets/js/plugins/arrive.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <!-- Chartist JS -->
-    <script src="/static/base/assets/js/plugins/chartist.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="/static/base/assets/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="/static/base/assets/js/material-dashboard.js?v=2.1.0" type="text/javascript"></script>
-    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <script src="/static/base/assets/demo/demo.js"></script>
-  
-    <!--<script>
-      $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        md.initDashboardPageCharts();
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="/static/base/vendors/popper/popper.min.js"></script>
+    <script src="/static/base/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="/static/base/vendors/anchorjs/anchor.min.js"></script>
+    <script src="/static/base/vendors/is/is.min.js"></script>
+    <script src="/static/base/vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="/static/base/vendors/rellax/rellax.min.js"> </script>
+    <script src="/static/base/vendors/fontawesome/all.min.js"></script>
+    <script src="/static/base/vendors/lodash/lodash.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="/static/base/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="/static/base/vendors/gsap/gsap.js"></script>
+    <script src="/static/base/vendors/gsap/customEase.js"></script>
+    <script src="/static/base/vendors/gsap/drawSVGPlugin.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-122907869-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-        md.initVectorMap();
-
-      });
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-122907869-1');
     </script>-->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    
-    
-    {% block extra_js %}{% endblock extra_js %}
-
-</body>
+    <script src="/static/base/assets/js/theme.js"></script>
+  </body>
 
 </html>

@@ -1,10 +1,10 @@
 from django.db import models
 
-from generales.models import ClaseModelo
-
 from django.contrib.auth.models import User
 
 from datetime import datetime
+
+from generales.models import ClaseModelo
 
 # Create your models here.
 
