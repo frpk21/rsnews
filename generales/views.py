@@ -18,9 +18,10 @@ from collections import namedtuple
 from django.http import JsonResponse
 from datetime import datetime, timedelta
 from generales.forms import MesAnoForm
-from noticias.models import Noticias
+from noticias.models import Noticias, Sedes
 from catalogos.models import Categoria, SubCategoria
 from noticias.forms import SuscribirseForm
+from django.db.models import Count
 
 
 class SinPrivilegios(PermissionRequiredMixin):
@@ -43,6 +44,9 @@ class HomePage(generic.View):
 def HomeView(request):
     template_name = 'generales/home.html'
     hoy = date.today()
+    total_mes = Noticias.objects.filter(modificado__date__month=hoy.month).count()
+
+
     titulares1 = Noticias.objects.filter(orden_destacado=0, subcategoria__id=1).exclude(subcategoria=12).order_by('-id')[:2]
     titulares2 = Noticias.objects.filter(orden_destacado=0, subcategoria__id=2).order_by('-id')[:4]
     titulares3 = Noticias.objects.filter(orden_destacado=0, subcategoria__categoria__gte=2).exclude(subcategoria=12).order_by('-id')[:4]
@@ -143,8 +147,21 @@ def HomeView(request):
         resultado={}
         template_name = "generales/home.html"
 
+    
+    sede1=Sedes.objects.all().order_by('nombre_sede')
+    sedes=[]
+    for i, item in enumerate(sede1):
+        val = Noticias.objects.filter(modificado__date__month=hoy.month, autor__profile__sede=item.id).count()
+        sedes.append({'nombre':item.nombre_sede, 'valor':int(round(val * 100 / 220, 0))}) # 200 notas / mes como meta minima de produccion de contenido.
+
+    #sedes=Sedes.objects.filter(id__gt=sede1.id).order_by('nombre_sede')
     context['form_home'] = form_home
     context['resultado'] = resultado
+    context['total_mes'] = total_mes
+    context['total_porc_mes'] = int(round(total_mes * 100 /1540, 0))  # 1540 noticias en total por mes
+    context["tit"] = nombre_mes(hoy.month)+" DE "+str(hoy.year)
+    context['sedes'] = sedes
+    #context['sede1'] = sede1
 
     return render(request, template_name, context)
 

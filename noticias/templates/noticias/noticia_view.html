@@ -1,0 +1,115 @@
+{% extends 'base/base.html' %}
+
+{% load auth_extras %} 
+
+{% block contenido %}
+
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+                <div class="col"><a class="font-sans-serif text-500" href="#!">{{post.modificado}}</a></div>
+                <div class="col ms-auto font-sans-serif text-end"><a class="me-3 text-500" href="#!"><span class="fas fa-heart me-1 text-danger"></span>14</a><a class="text-500" href="#!"><span class="far fa-comment me-1"></span>12</a></div>
+              </div>
+              <h3 class="mt-4">What selfies mean for avatars in VR and the way we perceive ourselves</h3>
+              <p class="mt-4">You just landed in Paris, the euro trip you’ve always dreamed of! After fighting with the street signs and foreign language, you finally exchange keys and smiles with your Airbnb host and drop off your bags.</p><img class="d-block mt-5 w-100" src="../assets/img/blog-single-01.jpg" alt="" />
+              <p class="mt-4">The first thing you do is visit the Eiffel Tower, which has been tempting you the whole time, peeking through the city’s legendary architecture. As you walk up to it, you see the familiar yet astonishing structure, defying you with its scale. There it is — you’ve seen it in pictures countless times, but this is different.</p>
+              <p class="mt-4">You’re there. There are no screens between you and The Tower. You can touch it, step on it, and most importantly, prove that you were there. You can’t wait to tell all your friends how marvelous it is. So, you reach inside your pocket and take out your most trusted travel companion: the camera phone.</p>
+              <p class="ps-4 my-6 border-start border-500 border-2 fst-italic fw-normal gray-600 lead">When shopping around for other companies that would allow Richard to keep his pride, he comes across the forward-thinking Flutterbug, who wants Richard to lead engineering on a fantastical new technology that seems poised to change the world. That technology, of course, allows you to look in a camera that puts a fake mustache on your face.</p>
+              <p class="mt-4">But, it’s important to recognize that Identity Transfer is appealing to many because it washes away the mundanity of their reality and places them as the protagonist of a newly found, unbounded environment, ripe for creativity.</p>
+              <p class="mt-4">No longer are you beholden by the unremarkable reality that surrounds you. Instead, you can now virtually inhabit any environment and bring along the things that make you<i>you</i>.</p>
+              <div class="my-6">
+                <div class="row g-2" id="blogGallery">
+                  <div class="col-5"><a href="#!" data-bp="../assets/img/single-blog-01.jpg" data-bigpicture='{"gallery":"#blogGallery"}' data-caption="Image caption"><img class="rounded w-100 h-100 fit-cover" src="../assets/img/single-blog-01.jpg" alt="" /></a></div>
+                  <div class="col-7"><a href="#!" data-bp="../assets/img/single-blog-02.jpg" data-bigpicture='{"gallery":"#blogGallery"}' data-caption="Image caption"><img class="rounded w-100 h-100 fit-cover" src="../assets/img/single-blog-02.jpg" alt="" /></a></div>
+                  <div class="col-6"><a href="#!" data-bp="../assets/img/single-blog-03.jpg" data-bigpicture='{"gallery":"#blogGallery"}' data-caption="Image caption"><img class="rounded w-100 h-100 fit-cover" src="../assets/img/single-blog-03.jpg" alt="" /></a></div>
+                  <div class="col-6"><a href="#!" data-bp="../assets/img/single-blog-04.jpg" data-bigpicture='{"gallery":"#blogGallery"}' data-caption="Image caption"><img class="rounded w-100 h-100 fit-cover" src="../assets/img/single-blog-04.jpg" alt="" /></a></div>
+                </div>
+              </div>
+              <p class="mt-4">In The Chemical Brothers’ music video ‘Wide Open', Dom &amp; Nic explore a surprisingly captivating motion capture technique where the main character slowly reveals a body made of a synthetic, see-through material that is then anthropomorphized through the masterful dance of Sonoya Mizuno.</p>
+              <p class="mt-4">Thanks to Gabriel Valdivia. Original post:<a href="https://artplusmarketing.com/identity-transfer-and-the-rise-of-virtual-surrealism-bac751e6342c" target="_blank">Identity Transfer And The Rise Of Virtual Surrealism</a></p>
+              <div class="row mt-5 fs-1 align-items-center">
+                <div class="col-auto">
+                  <h6 class="mb-0">Share on</h6>
+                </div>
+                <div class="col"><a class="text-facebook" href="#!"><span class="fab fa-facebook"></span></a><a class="text-twitter" href="#!"><span class="fab fa-twitter ms-2"></span></a><a class="text-google-plus" href="#!"><span class="fab fa-google-plus-square ms-2"></span></a></div>
+              </div>
+              <div class="mt-6"><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Creativity</a><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Ideas</a><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Travel</a><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Art</a><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Life</a><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Music</a></div>
+            </div>
+            <div class="col-12 mt-6">
+              <div class="bg-light p-5 rounded">
+                <div class="row g-0 justify-content-center text-center text-sm-start">
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 align-self-center pe-sm-3 pb-3 pb-sm-0"><img class="rounded-circle img-fluid" src="../assets/img/author.jpg" alt="" /></div>
+                  <div class="col-sm">
+                    <h5>Sophia Olivia</h5>
+                    <p class="font-sans-serif">Managing director at little Themewagon, author, media junkie, sports fan. I spend most of my time thinking about the impact technology is having on our society.</p><a class="font-sans-serif fs--1 fw-black text-black" href="#!">Follow @ twitter</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-8">
+              <h3 class="mb-4">More from Web design</h3>
+            </div>
+            <div class="col-lg-4"><a href="#!"><img class="rounded img-fluid" src="../assets/img/blog-1.jpg" alt="" />
+                <h5 class="mt-3">How to make the shame out of self-promotion totally insane!</h5>
+              </a></div>
+            <div class="col-lg-4 mt-4 mt-lg-0"><a href="#!"><img class="rounded img-fluid" src="../assets/img/blog-2.jpg" alt="" />
+                <h5 class="mt-3">Magic. My Macbook has been stolen.</h5>
+              </a></div>
+            <div class="col-lg-4 mt-4 mt-lg-0"><a href="#!"><img class="rounded img-fluid" src="../assets/img/blog-3.jpg" alt="" />
+                <h5 class="mt-3">How to make the shame out of self-promotion totally insane!</h5>
+              </a></div>
+          </div>
+        </div>
+        <div class="col-lg-4 mt-6 mt-lg-0 ps-xl-7">
+          <div class="row px-2">
+            <div class="col">
+              <form class="input-iconic">
+                <div class="input-icon">
+                  <button type="submit"><span class="fas fa-search text-500"></span></button>
+                </div>
+                <input class="form-control" type="search" placeholder="Search..." />
+              </form>
+              <h4 class="mt-5">Popular</h4><a class="mt-3 d-inline-block" href="blog-single.html"><img class="rounded w-100 fit-cover" src="../assets/img/blog-1.jpg" alt="" />
+                <h5 class="mt-3">How to take the shame out of self-promotion</h5>
+              </a><a class="mt-4 d-inline-block" href="blog-single.html"><img class="rounded w-100 fit-cover" src="../assets/img/blog-3.jpg" alt="" />
+                <h5 class="mt-3">Magic. My Macbook has been stolen.</h5>
+              </a>
+              <div class="mt-6">
+                <h4>Tags</h4>
+                <ul class="nav mt-3">
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Creativity</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Ideas</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Travel</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Art</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Psychology</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Life</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Music</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Books</a></li>
+                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Movie</a></li>
+                </ul>
+              </div>
+              <div class="mt-6">
+                <h4>Categories</h4>
+                <ul class="bullet-inside ps-0 font-sans-serif">
+                  <li><a class="text-600" href="#!">Design</a></li>
+                  <li><a class="text-600" href="#!">Programming</a></li>
+                  <li><a class="text-600" href="#!">Writing</a></li>
+                  <li><a class="text-600" href="#!">Games</a></li>
+                  <li><a class="text-600" href="#!">Typography</a></li>
+                  <li><a class="text-600" href="#!">Cricket</a></li>
+                  <li><a class="text-600" href="#!">Soccer</a></li>
+                  <li><a class="text-600" href="#!">Photography</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock contenido %}

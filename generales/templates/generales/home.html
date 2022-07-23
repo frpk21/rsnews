@@ -4,23 +4,34 @@
 
 {% block contenido %}
 
-<section class="text-center py-0 overflow-hidden" id="bicycleCta">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col px-4">
-                <div class="position-relative overflow-hidden rounded">
-                    <div class="bg-holder overlay" style="background-image:url(/static/base/assets/img/bicycle-11.jpg);" data-parallax="" data-rellax-percentage="0.5" data-rellax-speed="-3"></div>
-                    <div class="position-relative py-8 py-md-11" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-                        <h2 class="fs-4 text-white px-4 px-sm-0 display-4 mb-4" data-zanim-xs='{"delay":0.1}'>train insane or remain the same</h2>
-                        <div data-zanim-xs='{"delay":0.2}'><a class="btn btn-outline-light border-2 mt-3" href="#!">the fear schredder</a></div>
-                    </div>
-                </div>
-            </div>
+<section class="text-center" id="defaultProgressbar">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="fs-3 fs-sm-4 text-decoration-underline mb-1">Ejecuci&oacute;n</h2>
+          <p class="text-500 fst-italic">Sorpréndase al ver los resultados de su producción digital con rsNews ..</p>
         </div>
+      </div>
+      <div class="row align-items-center mt-3">
+        <div class="col-md-6 position-relative">
+          <div class="progress-circle mb-4" data-progress-circle='{"progress":{{total_porc_mes}},"subText":"<span class=&#39;text-700 pt-2&#39;>Basado en un total de 1540<br/>notas/mes</span>"}'> </div>
+          <h4>{{tit}}</h4>
+          <p class="px-4">...</p>
+        </div>
+        <div class="col-md-6 ps-md-7 text-start mt-8 mt-md-0">
+           
+           {% for item in sedes %}
+               <div class="progress-line me-4 mt-4" data-progress-line='{"progress":{{item.valor}},"subText":"{{item.nombre}}"}'></div>
+           {% endfor %}
+          
+          <p class="mt-4">Producci&oacute;n por sedes basada en un m&iacute;nimo cumplido de 220 notas/mes.</p><a class="btn btn-outline-dark px-5 mt-5" href="#!">ver detalles</a>
+        </div>
+      </div>
     </div>
-</section>
-<!-- <section> close ============================-->
-<!-- ============================================-->
+    <!-- end of .container-->
+
+  </section>
 
 <!-- ============================================-->
 <!-- <section> begin ============================-->
@@ -33,12 +44,12 @@
                     <div class="position-relative py-8 py-md-11">
                     <div data-zanim-timeline="{}" data-zanim-trigger="scroll">
                         <div class="overflow-hidden">
-                            <h6 class="text-white ls text-uppercase" data-zanim-xs='{"delay":0}'>lighter, faster, and better handling</h6>
+                            <h6 class="text-white ls text-uppercase" data-zanim-xs='{"delay":0}'>Considerada la carrera ciclistica más importante del mundo</h6>
                         </div>
                         <div class="overflow-hidden">
-                            <h2 class="fs-2 fs-sm-3 text-white" data-zanim-xs='{"delay":0.1}'>the new tarmac</h2>
+                            <h2 class="fs-2 fs-sm-3 text-white" data-zanim-xs='{"delay":0.1}'>Tour de Francia 2022</h2>
                         </div>
-                        <div data-zanim-xs='{"delay":0.2}'><a class="btn btn-dark mt-4" href="#!">meet the new tarmac</a></div>
+                        <div data-zanim-xs='{"delay":0.2}'><a class="btn btn-dark mt-4" href="#!">JUMBO-VISMA, SUPERIOR HASTA EL FINAL</a></div>
                     </div>
                 </div>
             </div>
@@ -49,12 +60,12 @@
                 <div class="position-relative py-8 py-md-11">
                     <div data-zanim-timeline='{"delay":0.1}' data-zanim-trigger="scroll">
                         <div class="overflow-hidden">
-                            <h6 class="text-white ls text-uppercase" data-zanim-xs='{"delay":0}'>real fit. real fast.</h6>
+                            <h6 class="text-white ls text-uppercase" data-zanim-xs='{"delay":0}'>Hoy en día ante las dificultades de tu vida</h6>
                         </div>
                         <div class="overflow-hidden">
-                            <h2 class="fs-2 fs-sm-3 text-white" data-zanim-xs='{"delay":0.1}'>the all-new sirrus</h2>
+                            <h2 class="fs-2 fs-sm-3 text-white" data-zanim-xs='{"delay":0.1}'>La Vida de Hoy</h2>
                         </div>
-                        <div data-zanim-xs='{"delay":0.2}'><a class="btn btn-dark mt-4" href="#!">meet the new sirrus</a></div>
+                        <div data-zanim-xs='{"delay":0.2}'><a class="btn btn-dark mt-4" href="#!">lo que cambia son las actitudes de cómo vives la vida</a></div>
                     </div>
                 </div>
             </div>
@@ -72,24 +83,24 @@
     <div class="container-fluid">
         <div class="row m-0">
             <div class="col-sm-6 col-lg-3"><a class="d-block" href="#!"><img class="w-100 rounded" src="/static/base/assets/img/bicycle-03.jpg" alt="" data-zanim-xs='{"delay":0,"animation":"zoom-in"}' data-zanim-trigger="scroll" />
-                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">Mountain</h6>
-                <h4>mountain</h4>
-                <p class="text-700 d-inline-block">XC, DH, trail—our mountain bikes cover every facet of riding.</p>
+                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">Monta&nacute;a</h6>
+                <h4> ciclismo de monta&nacute;a</h4>
+                <p class="text-700 d-inline-block">10 rutas de cicloturismo para enamorarte de Colombia</p>
             </a></div>
-            <div class="col-sm-6 col-lg-3 mt-4 mt-sm-0"><a class="d-block" href="#!"><img class="w-100 rounded" src="/static/base/assets/img/bicycle-04.jpg" alt="" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}' data-zanim-trigger="scroll" />
-                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">Road</h6>
-                <h4>road</h4>
-                <p class="text-700 d-inline-block">Whether you're a veteran racer or first-time rider, we have the perfect Road …</p>
+            <div class="col-sm-6 col-lg-3 mt-4 mt-sm-0"><a class="d-block" href="#!"><img class="w-100 rounded" src="/static/base/assets/img/spacex.jpg" alt="" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}' data-zanim-trigger="scroll" />
+                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">SpaceX</h6>
+                <h4>ciencia</h4>
+                <p class="text-700 d-inline-block">Nasa y SpaceX esperan enviar nueva misión tripulada a EEI el 29 septiembre</p>
             </a></div>
-            <div class="col-sm-6 col-lg-3 mt-4 mt-lg-0"><a class="d-block" href="#!"><img class="w-100 rounded" src="/static/base/assets/img/bicycle-05.jpg" alt="" data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}' data-zanim-trigger="scroll" />
-                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">fitness</h6>
-                <h4>fitness &amp; hybrid</h4>
-                <p class="text-700 d-inline-block">Get in-shape or around town with our Fitness &amp; Urban bikes.</p>
+            <div class="col-sm-6 col-lg-3 mt-4 mt-lg-0"><a class="d-block" href="#!"><img class="w-100 rounded" src="/static/base/assets/img/bog.jpg" alt="" data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}' data-zanim-trigger="scroll" />
+                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">Ciudad</h6>
+                <h4>Bogot&aacute; deconocida</h4>
+                <p class="text-700 d-inline-block">La historia del pasaje Michonik: el primer conjunto residencial de Bogotá</p>
             </a></div>
-            <div class="col-sm-6 col-lg-3 mt-4 mt-lg-0"><a class="d-block" href="#!"><img class="w-100 rounded" src="/static/base/assets/img/bicycle-06.jpg" alt="" data-zanim-xs='{"delay":0.3,"animation":"zoom-in"}' data-zanim-trigger="scroll" />
-                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">Turbo</h6>
-                <h4>e-bikes</h4>
-                <p class="text-700 d-inline-block">Our E-Bikes are far from typical. They feel just like a Specialized bike shou…</p>
+            <div class="col-sm-6 col-lg-3 mt-4 mt-lg-0"><a class="d-block" href="#!"><img class="w-100 rounded" src="/static/base/assets/img/cart_Mercado de Bazurto.jpg" alt="" data-zanim-xs='{"delay":0.3,"animation":"zoom-in"}' data-zanim-trigger="scroll" />
+                <h6 class="d-inline-block ls text-uppercase fw-normal mb-0 mt-3 text-600">Ciudad</h6>
+                <h4>Cartagena</h4>
+                <p class="text-700 d-inline-block">Alto riesgo de desplome del Mercado de Bazurto</p>
             </a></div>
         </div>
     </div>
@@ -189,10 +200,62 @@
 <!-- ============================================-->
 
 
+<!-- ============================================-->
+            <!-- <section> begin ============================-->
+                <section class="bg-dark py-6 font-sans-serif" id="bicycleSignUp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-xl-5 pe-lg-8"><p>Un producto:</p>
+                                <h4 class="text-300 mb-4"><img class="fancynavbar-brand-img" src="/static/base/image/logo-inrai-blanco-400px.png" alt="" width="200" /></h4><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size me-2 text-dark border rounded-circle bg-white fs-1"><i class="fab fa-facebook-f fa-stack-1x"></i></span></a><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size me-2 text-dark border rounded-circle bg-white fs-1"><i class="fab fa-instagram fa-stack-1x"></i></span></a><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size text-dark border rounded-circle bg-white fs-1"><i class="fab fa-youtube fa-stack-1x"></i></span></a>
+                                <p class="text-500 mt-4">Regístrese para recibir las últimas noticias en su correo.</p>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="eMail" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                    <button class="btn border border-light text-light px-4" id="button-addon2" type="button">Inscribirse</button>
+                                </div>
+                            </div>
+                            <div class="col mt-6 mt-lg-0">
+                                <div class="row">
+                                    <div class="col-6 col-sm-4">
+                                        <h4 class="text-300 mb-4">contenido</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="py-1"><a class="text-500" href="#!">Noticias del D&iacute;a</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Podcast</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Tecnolog&iacute;a</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Deportes</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Internacional</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Regional</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6 col-sm-4">
+                                        <h4 class="text-300 mb-4">emisoras</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="py-1"><a class="text-500" href="#!">Cristalina Cundinamarca 102.3FM</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Cristalina Huila 101.3FM</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">HJDOBLEK Huila 840KHZ</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Cristalina Caquet&aacute; 101.1FM</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">La Caquete&nacute;a 93.1FM</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">HJDOBLEK Pitalito 1280KHZ</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6 col-sm-4 mt-6 mt-sm-0">
+                                        <h4 class="text-300 mb-4">compa&nacute;&iacute;a</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="py-1"><a class="text-500" href="#!">Acerca de INRAI</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Agencia de Noticias</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Privacidad</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">T&eacute;rminos y Condiciones</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Soporte</a></li>
+                                            <li class="py-1"><a class="text-500" href="#!">Cont&aacute;cto</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- <section> close ============================-->
+                <!-- ============================================-->
 
-</main>
-<!-- ===============================================-->
-<!--    End of Main Content-->
-<!-- ===============================================-->
+
 
 {% endblock contenido %}

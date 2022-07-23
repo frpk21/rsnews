@@ -1,0 +1,135 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block contenido%}
+{% load humanize %}
+{% if form.errors %}
+    {% for field in form %}
+        {% if field.errors %}
+            <div class="alert alert-danger fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {% for error in field.errors %}
+                    <strong>{{ error|escape }}</strong>
+                {% endfor %}
+            </div>
+        {% endif %} 
+    {% endfor %}
+    {% if form.non_field_errors%}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {% for error in form.non_field_errors %}
+                <strong>{{ error|escape }}</strong>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endif %}
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container-fluid">
+        <form id="id_form_invoice" enctype="multipart/form-data" name="form1" method="POST" onkeydown="return event.key != 'Enter';" action="">
+            <div class="card-header card-header-rose card-header-icon">
+                <div class="panel-heading">
+                    <h4 class="card-title" style="color:rgb(10, 10, 10); padding: 0px 40px;">
+                        <strong>{% if object %} Editar {% else %} Nueva {% endif %} Noticia {{ form.id }}</strong>
+                        <span style="padding: 15px; font-size: 12px; color:gray;">SEDE: {{sede.nombre_sede}}</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="card-body ">
+                <div style="display: none">
+                </div>
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+        </form>
+        <div class="panel-footer">
+            <div class="text-center">
+                <button class="btn btn-social-icon btn-success" onclick="return ConfirmaGrabar()"><i class="fa fa-save"></i> Guardar</button>
+                <a class="btn btn-social-icon btn-default" href="{% url 'noticias:noticia_list' %}"><i class="fa fa-times"></i> Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.onload=function (){
+
+        document.getElementById("id_subcategoria").focus();
+    }
+
+    function ConfirmaGrabar(){
+        swal({
+            title: 'Confirme.',
+            showCancelButton: false,
+            html:"<p>..</p>",
+            showCancelButton: true,
+            confirmButtonText: 'Generar Contenido ?',
+            cancelButtonText: 'Cancelar',
+            confirmButtonClass: "btn btn-success",
+            cancelButtonClass: "btn btn-danger",
+            buttonsStyling: false
+        }).then(function(dismiss) {
+            if (dismiss.dismiss === 'cancel') {
+                swal({
+                    title: 'Cancelado',
+                    text: 'Contenido no generado..',
+                    type: 'error',
+                    confirmButtonClass: "btn btn-info",
+                    buttonsStyling: false
+                }).catch(swal.noop)
+            }
+            else {
+                $('#id_form_invoice').submit();
+            }
+        }).catch(swal.noop)
+    }
+
+    function format(input){
+        var num = input.value.replace(/\./g,'');
+
+        if(!isNaN(num)){
+            num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+            num = num.split('').reverse().join('').replace(/^[\.]/,'');
+            input.value = num;
+        }
+        else{ alert('Solo se permiten numeros');
+            input.value = input.value.replace(/[^\d\.]*/g,'');
+        }
+    }
+
+</script>
+<script src="/static/base/plugins/js/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+<script src="/static/base/plugins/js/moment.min.js"></script>
+<script src="/static/base/plugins/js/jquery.bootstrap-wizard.js"></script>
+<script src="/static/base/plugins/js/sweetalert2.js"></script>
+<script src="/static/base/plugins/js/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+    $(function () {
+      $("#datetimepicker1").datetimepicker({
+        format: 'DD/MM/YYYY HH:mm',
+      });
+    });
+  </script>
+{% endblock contenido %}
+

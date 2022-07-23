@@ -13,6 +13,10 @@ from noticias import views
 
 urlpatterns = [
     path('news/cat/<int:pk>', views.CategoriaView, name="categoria"),
+    path('news/list', views.NoticiasListView.as_view(), name="noticia_list"),
+    path('news/new', views.NoticiaNew.as_view(), name='noticia'),
+    path('news/edit/<int:pk>', views.NoticiaEdit.as_view(), name='noticia_edit'),
+    path('news/view/<int:pk>', views.NoticiaView.as_view(), name='noticia_view'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
  

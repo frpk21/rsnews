@@ -27,7 +27,10 @@
         <link href="https://fonts.googleapis.com/css?family=PT+Mono%7cPT+Serif:400,400i%7cLato:100,300,400,700,800,900" rel="stylesheet">
         <link href="/static/base/assets/css/theme.css" rel="stylesheet" />
         <link href="/static/base/assets/css/user.css" rel="stylesheet" />
-
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+   
     </head>
 
 
@@ -58,16 +61,18 @@
                     <li><img class="fancynavbar-brand-img" src="/static/base/image/logo-inrainews-blanco-400px.png" alt="" width="160" /></li>
                     <li><p>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . . . . . . . . . . . .. . . . . . . . . . . . . .</p></li>
                 <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">contenido</span></a>
-                    {% if request.user|has_group:"administradores" %}
-                        <div class="fancy-dropdown-menu">
-                            <div class="row pb-4 pt-3">
-                                <div class="col-auto">
-                                    <a class=" false fancy-dropdown-item" href="../homes/bicycle.html"> Noticias</a>
-                                    <a class=" false fancy-dropdown-item" href="../homes/bigcartel.html"> Podcast</a>
-                                    <a class=" false fancy-dropdown-item" href="../homes/cafe.html"> V&iacute;deos</a>
-                                </div>
+                    <div class="fancy-dropdown-menu">
+                        <div class="row pb-4 pt-3">
+                            <div class="col-auto">
+                                <a class=" false fancy-dropdown-item" href="{% url 'noticias:noticia_list' %}"> Noticias</a>
+                                <a class=" false fancy-dropdown-item" href=""> Podcast</a>
+                                <a class=" false fancy-dropdown-item" href=""> V&iacute;deos</a>
+                                <a class=" false fancy-dropdown-item" href=""> Pauta Radio</a>
+                                <a class=" false fancy-dropdown-item" href=""> Pauta Digital</a>
                             </div>
                         </div>
+                    </div>
+                    {% if request.user|has_group:"administradores" %}
                     {% elif request.user|has_group:"clientes" %}
                     {% else %}
                     {% endif %}
@@ -146,61 +151,7 @@
             {% block contenido %}Blank{% endblock contenido %}
 
 
-            <!-- ============================================-->
-            <!-- <section> begin ============================-->
-            <section class="bg-dark py-6 font-sans-serif" id="bicycleSignUp">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-xl-5 pe-lg-8">
-                            <h4 class="text-300 mb-4"><img class="fancynavbar-brand-img" src="/static/base/image/logo-inrai-blanco-400px.png" alt="" width="200" /></h4><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size me-2 text-dark border rounded-circle bg-white fs-1"><i class="fab fa-facebook-f fa-stack-1x"></i></span></a><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size me-2 text-dark border rounded-circle bg-white fs-1"><i class="fab fa-instagram fa-stack-1x"></i></span></a><a class="d-inline-block" href="#!"><span class="fa-stack fa-stack-size text-dark border rounded-circle bg-white fs-1"><i class="fab fa-youtube fa-stack-1x"></i></span></a>
-                            <p class="text-500 mt-4">Regístrese para recibir las últimas noticias en su correo.</p>
-                            <div class="input-group mb-3">
-                                <input class="form-control" type="text" placeholder="eMail" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                                <button class="btn border border-light text-light px-4" id="button-addon2" type="button">Inscribirse</button>
-                            </div>
-                        </div>
-                        <div class="col mt-6 mt-lg-0">
-                            <div class="row">
-                                <div class="col-6 col-sm-4">
-                                    <h4 class="text-300 mb-4">contenido</h4>
-                                    <ul class="list-unstyled">
-                                        <li class="py-1"><a class="text-500" href="#!">Noticias del D&iacute;a</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Podcast</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Tecnolog&iacute;a</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Deportes</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Internacional</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Regional</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-6 col-sm-4">
-                                    <h4 class="text-300 mb-4">emisoras</h4>
-                                    <ul class="list-unstyled">
-                                        <li class="py-1"><a class="text-500" href="#!">Cristalina Cundinamarca 102.3FM</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Cristalina Huila 101.3FM</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">HJDOBLEK Huila 840KHZ</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Cristalina Caquet&aacute; 101.1FM</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">La Caquete&nacute;a 93.1FM</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">HJDOBLEK Pitalito 1280KHZ</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-6 col-sm-4 mt-6 mt-sm-0">
-                                    <h4 class="text-300 mb-4">compa&nacute;&iacute;a</h4>
-                                    <ul class="list-unstyled">
-                                        <li class="py-1"><a class="text-500" href="#!">Acerca de INRAI</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Agencia de Noticias</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Privacidad</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">T&eacute;rminos y Condiciones</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Soporte</a></li>
-                                        <li class="py-1"><a class="text-500" href="#!">Cont&aacute;cto</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- <section> close ============================-->
-            <!-- ============================================-->
+            
 
         </main>
         <footer class="footer bg-black text-600 py-4 font-sans-serif text-center overflow-hidden" data-zanim-timeline="{}" data-zanim-trigger="scroll">
@@ -259,6 +210,7 @@
     <script src="/static/base/vendors/gsap/gsap.js"></script>
     <script src="/static/base/vendors/gsap/customEase.js"></script>
     <script src="/static/base/vendors/gsap/drawSVGPlugin.js"></script>
+    <script src="/static/base/vendors/progressbar/progressbar.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-122907869-1"></script>
     <script>

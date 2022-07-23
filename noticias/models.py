@@ -9,6 +9,8 @@ from django.urls import reverse
 #from multiselectfield import MultiSelectField
 from generales.models import ClaseModelo
 from catalogos.models import SubCategoria
+from django.db.models.signals import post_save
+from django.dispatch import receiver
  
 class Sedes(ClaseModelo):
     sede = models.IntegerField(default=0, null=False, blank=False)
@@ -36,8 +38,8 @@ class Profile(models.Model):
 
 class Noticias(ClaseModelo):
     subcategoria=models.ForeignKey(SubCategoria, on_delete=models.CASCADE, default=0, null=False, blank=False)
-    titulo = models.CharField(help_text='Título de la noticia', blank=False, null=False, max_length=200)
-    subtitulo = models.CharField(help_text='Sub título de la noticia', blank=False, null=False, max_length=500)
+    titulo = models.CharField(blank=False, null=False, max_length=200)
+    subtitulo = models.CharField(blank=False, null=False, max_length=500)
     descripcion = RichTextField(max_length=15000, blank=True, null=True)
     archivo_audio = models.FileField("Archivo Audio", upload_to="audio/", blank=True, null=True, default='')
     urlvideo = models.CharField('URL Youtube', blank=True, null=True, default='', max_length=200)
@@ -56,10 +58,9 @@ class Noticias(ClaseModelo):
     slug = models.SlugField(blank=True,null=True, max_length=250)
     CHOICES1 = ((0,'En aprobación'),(1,'Devuelto para revisión'),(2,'Rechazado'),(3,'Aprobado'),(4,'Publicado'))
     estado = models.IntegerField(choices=CHOICES1, default=0, blank=False, null=False)
-    publicar_en = models.ManyToManyField(Sedes, related_name='Destinos_publicadas') 
 
     def __str__(self):
-        return '{}-{}'.format(self.titulo, self.usuario.profile.sede.nombre_sede)
+        return '{}-{}'.format(self.titulo, self.autor.profile.sede.nombre_sede)
 
     def save(self):
         self.slug = slugify(self.titulo)
@@ -68,6 +69,18 @@ class Noticias(ClaseModelo):
     class Meta:
         verbose_name_plural = "Noticias"
 
+class Publicados(ClaseModelo):
+    categoria = models.ForeignKey(Noticias, on_delete=models.CASCADE)
+    sede = models.ForeignKey(Sedes, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return '{}'.format(self.sede.nombre_sede)
+
+    def save(self):
+        super(SubCategoria, self).save()
+
+    class Meta:
+        verbose_name_plural = "Publicados" 
 
 
 

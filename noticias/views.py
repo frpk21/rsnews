@@ -1,3 +1,4 @@
+from tkinter import FLAT
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -18,7 +19,8 @@ from collections import namedtuple
 from django.http import JsonResponse
 from datetime import datetime, timedelta
 from generales.forms import MesAnoForm
-from .models import Noticias
+from .models import Noticias, Sedes
+from .forms import NoticiasForm
 from catalogos.models import Categoria, SubCategoria
 from noticias.forms import SuscribirseForm
 
@@ -70,3 +72,149 @@ def CategoriaView(request, pk):
     context['resultado'] = resultado
     
     return render(request, template_name, context)
+
+
+
+class NoticiasListView(LoginRequiredMixin, generic.ListView):
+    login_url = 'generales:login'
+    model = Noticias
+    template_name = "noticias/noticias_list.html"
+
+    def get(self, request, *args, **kwargs):
+        noticias = Noticias.objects.filter(estado=0).order_by('-id')
+        self.object_list = noticias
+        context = super(NoticiasListView, self).get_context_data(*args, **kwargs)
+        return self.render_to_response(
+            self.get_context_data(
+                obj = noticias,
+                sede = self.request.user.profile.sede.nombre_sede
+            )
+        )
+
+
+class NoticiaNew(LoginRequiredMixin, generic.CreateView):
+    permission_required = 'noticias.add_noticias'
+    model = Noticias
+    login_url = 'generales:login'
+    template_name = 'noticias/noticia_form.html'
+    form_class = NoticiasForm
+    success_url = reverse_lazy('noticias:noticia_list')
+
+    def get(self, request, *args, **kwargs):
+        sedes = Sedes.objects.all()
+        ctx = {
+            'subcategoria': '',
+            'titulo': '',
+            'subtitulo': '',
+            'descripcion': '',
+            'fecha_inicio_publicacion': datetime.today() + timedelta(days=(1)),
+            'fecha_final_publicacion': datetime.today() + timedelta(days=(2)),
+            'orden_destacado': 0,
+            'imagen_destacado': '',
+            'archivo_audio': '',
+            'urlvideo': '',
+            'viral': False,
+            'ultima_hora': False,
+            'fuente': '',
+            'html': '',
+            'pdf': ''
+            }
+
+        self.object = None
+        form = NoticiasForm(initial=ctx)
+
+        return self.render_to_response( 
+            self.get_context_data(
+                form=form,
+                sedes=sedes,
+                sede=self.request.user.profile.sede
+            )
+        )
+
+    def post(self, request, *args, **kwargs):
+        form =NoticiasForm(request.POST, request.FILES)
+        print("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+        print(form.errors)
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.autor = self.request.user
+        self.object = form.save()
+        return HttpResponseRedirect(reverse_lazy("noticias:noticia_list"))
+
+    def form_invalid(self, form):
+        self.object=form
+        return self.render_to_response(
+            self.get_context_data(
+                form=form,
+                sede=self.request.user.profile.sede
+            )
+        )
+
+class NoticiaEdit(LoginRequiredMixin, generic.UpdateView):
+    permission_required='noticias.change_noticias'
+    model=Noticias
+    template_name="noticias/noticia_form.html"
+    form_class=NoticiasForm
+    success_url=reverse_lazy("noticias:noticia_list")
+
+    def get(self, request, *args, **kwargs):
+        post = Noticias.objects.filter(id=kwargs["pk"])
+        for i, item in enumerate(post):
+            ctx = {
+            'subcategoria': item.subcategoria,
+            'titulo': item.titulo,
+            'subtitulo': item.subtitulo,
+            'descripcion': item.descripcion,
+            'fecha_inicio_publicacion': item.fecha_inicio_publicacion,
+            'fecha_final_publicacion': item.fecha_final_publicacion,
+            'orden_destacado': item.orden_destacado,
+            'imagen_destacado': item.imagen_destacado,
+            'archivo_audio': item.archivo_audio,
+            'urlvideo': item.urlvideo,
+            'viral': item.viral,
+            'ultima_hora': item.ultima_hora,
+            'fuente': item.fuente,
+            'html': item.html,
+            'pdf': item.pdf
+            }
+        self.object = None
+        form = NoticiasForm(initial=ctx)
+
+        return self.render_to_response( 
+            self.get_context_data(
+                form=form,
+                sede=self.request.user.profile.sede
+            )
+        )
+
+    def post(self, request, *args, **kwargs):
+        noticia = Noticias.objects.get(id=kwargs["pk"])
+        form = NoticiasForm(request.POST, request.FILES, instance=noticia)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.autor = self.request.user
+            post.save()
+            return HttpResponseRedirect(self.success_url)
+
+
+class NoticiaView(LoginRequiredMixin, generic.TemplateView):
+    permission_required='noticias.view_noticias'
+    model=Noticias
+    template_name="noticias/noticia_view.html"
+    context_object_name="post" 
+    def get_context_data(self, **kwargs):
+        hoy = date.today()
+        mes_actual = hoy.month
+        ano_actual = hoy.year
+        context = super().get_context_data(**kwargs)
+        post = Noticias.objects.get(id=kwargs["pk"])
+
+        context['post'] = post
+
+        return context
