@@ -163,6 +163,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 try:
-    exec(open(os.path.join(BASE_DIR, 'rsnews/settings_local.py')).read())
+    exec(open(os.path.join(BASE_DIR, 'code/rsnews/settings_local.py')).read())
 except IOError:
     raise Exception('error reading local settings')
