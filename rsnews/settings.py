@@ -16,7 +16,6 @@ from django.utils.translation import ugettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,8 +25,7 @@ SECRET_KEY = '(yyh=w067gn7w09-qxye06@62xdx8g42c7_a8boo!@ey8yuoqh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -78,16 +76,15 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'libraries':{
-            'auth_extras': 'generales.templatetags.auth_extras',
-            
+            'libraries': {
+                'auth_extras': 'generales.templatetags.auth_extras',
+
             }
         },
     },
 ]
 
 WSGI_APPLICATION = 'rsnews.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -100,10 +97,9 @@ DATABASES = {
         'PASSWORD': '0268',
         'HOST': 'localhost',
         'PORT': '5432',
-       },
-    
-}
+    },
 
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -123,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -140,8 +135,8 @@ USE_TZ = True
 USE_THOUSAND_SEPARATOR = False
 
 LANGUAGES = (
- ('en', _('English')),
- ('es', _('Spanish')),
+    ('en', _('English')),
+    ('es', _('Spanish')),
 )
 
 STATICFILES_DIRS = [
@@ -167,9 +162,7 @@ LOGIN_REDIRECT_URL = '/'
 # cuando el usuario salga (logout), el programa lo manda al login.html
 LOGOUT_REDIRECT_URL = '/login/'
 
-ALLOWED_HOSTS = ['*']
-
 try:
-   exec(open(os.path.join(BASE_DIR, 'monitoreo/settings_local.py')).read())
+    exec(open(os.path.join(BASE_DIR, 'rsnews/settings_local.py')).read())
 except IOError:
-   raise Exception('error reading local settings')
+    raise Exception('error reading local settings')
