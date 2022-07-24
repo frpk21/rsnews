@@ -89,7 +89,7 @@
                           </button>
                         </td>
                         <td class="td-actions text-center">
-                          {% if request.user|has_group:"administradores" %}
+                          {% if request.user|has_group:"editores" %}
                             <a href="{% url 'noticias:noticia_view' item.id %}">
                               <button type="button" rel="tooltip" class="btn">
                                 <span class="far fa-eye"></span>
@@ -101,7 +101,7 @@
                               <span class="far fa-edit"></span>
                             </button>
                           </a>
-                          {% if request.user|has_group:"administradores" %}
+                          {% if request.user|has_group:"editores" %}
                             <a href="">
                               <button type="button" rel="tooltip" class="btn">
                                 <span class="far fa-envelope"></span>
