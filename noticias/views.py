@@ -217,7 +217,10 @@ class NoticiaView(LoginRequiredMixin, generic.TemplateView):
         ano_actual = hoy.year
         context = super().get_context_data(**kwargs)
         post = Noticias.objects.get(id=kwargs["pk"])
-
+        grupo=self.request.user.groups.get(user=self.request.user)
+        sede=self.request.user.profile.sede
         context['post'] = post
+        context['grupo'] = grupo
+        context['sede'] = sede
 
         return context
