@@ -7,11 +7,11 @@
 <section class="py-3" id="LandingFeatures">
     <div class="container-fluid"><span class="fas fa-check-double"></span><span>{{grupo}}  -  {{sede.nombre_sede}}</span>
         <div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-            <h3>{{cat_name}}</h3><br>{{post_cat}}
+            <h3>{{cat_name}}</h3><br>
             {% for item in post_cat %}
                 <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 pe-lg-2" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}'>
                     <div class="hoverbox min-vh-50 h-100 py-6">
-                        <div class="bg-holder rounded" style="background-image:url(item.imagen_destacado);">
+                        <div class="bg-holder rounded" style="background-image:url(item.imagen_destacado.url);">
                         </div>
                         <div class="hoverbox-content d-flex bg-black justify-content-center rounded">
                             <div class="align-self-center px-4 px-lg-6 text-center"><span class="fa fa-signal text-white fs-2 mb-2"></span>
