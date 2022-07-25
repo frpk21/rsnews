@@ -73,9 +73,9 @@
               </div>
               <div class="mt-6">
                 <h4>Sub Categor&iacute;as</h4>
-                <ul class="bullet-inside ps-0 font-sans-serif">
+                <ul class="bullet-inside ps-0 font-sans-serif" style="font-size: 10px; color:black;">
                   {% for item in subcategorias %}
-                    <li><a class="text-600" href="#!">{{item.nombre}} - <span>{{post.subcategoria.categoria.nombre}}</span></a></li>
+                    <li><a class="text-600" href="#!">{{item.nombre}} - <span style="font-size: 10px;">{{post.subcategoria.categoria.nombre}}</span></a></li>
                   {% endfor %}
                 </ul>
               </div>
