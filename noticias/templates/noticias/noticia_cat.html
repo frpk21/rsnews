@@ -11,16 +11,7 @@
             {% for item in post_cat %}
                 <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 pe-lg-2" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}'>
                     <div class="hoverbox min-vh-50 h-100 py-6">
-                        {% if item.urlvideo|length=0 %}
-                            <div class="bg-holder rounded" style="background-image:url('{{item.imagen_destacado.url}}');">
-                            </div>
-                            <div class="hoverbox-content d-flex bg-black justify-content-center rounded">
-                                <div class="align-self-center px-4 px-lg-6 text-center"><span class="fa fa-signal text-white fs-2 mb-2"></span>
-                                <h4 class="mb-1 text-white">{{item.titulo}}</h4>
-                                <p class="px-3 font-sans-serif text-500">{{item.subtitulo}}</p>
-                                </div>
-                            </div>
-                        {% else %}
+                        {% if item.urlvideo|length > 0 %}
                             <a class="position-absolute bottom-0 end-0 mb-3 me-4" href="#!" data-bigPicture='{"ytSrc":"GJNxNUi6BmA"}'>
                                 <svg width="45" height="45" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 274.19 274.19" data-zanim-svg='{"duration":2,"ease":"CubicBezier","trigger":"scroll"}'>
                                 <defs>
@@ -39,6 +30,15 @@
                                 </g>
                                 </svg>
                             </a>
+                        {% else %}
+                            <div class="bg-holder rounded" style="background-image:url('{{item.imagen_destacado.url}}');">
+                            </div>
+                            <div class="hoverbox-content d-flex bg-black justify-content-center rounded">
+                                <div class="align-self-center px-4 px-lg-6 text-center"><span class="fa fa-signal text-white fs-2 mb-2"></span>
+                                <h4 class="mb-1 text-white">{{item.titulo}}</h4>
+                                <p class="px-3 font-sans-serif text-500">{{item.subtitulo}}</p>
+                                </div>
+                            </div>
                         {% endif %}
                         </div>
                     </div>
