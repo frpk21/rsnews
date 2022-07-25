@@ -11,7 +11,7 @@
             {% for item in post_cat %}
                 <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 pe-lg-2" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}'>
                     <div class="hoverbox min-vh-50 h-100 py-6">
-                        {% if item.urlvideo|length==0 %}
+                        {% if item.urlvideo|length=0 %}
                             <div class="bg-holder rounded" style="background-image:url('{{item.imagen_destacado.url}}');">
                             </div>
                             <div class="hoverbox-content d-flex bg-black justify-content-center rounded">
