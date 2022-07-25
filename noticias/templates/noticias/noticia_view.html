@@ -63,21 +63,12 @@
                   <h5 class="mt-3">{{item.titulo}}</h5>
                 </a>
               {% endfor %}
-                <a class="mt-4 d-inline-block" href="blog-single.html"><img class="rounded w-100 fit-cover" src="/static/base/assets/img/blog-3.jpg" alt="" />
-                <h5 class="mt-3">Magic. My Macbook has been stolen.</h5>
-              </a>
               <div class="mt-6">
-                <h4>Tags</h4>
+                <h4>Categorias</h4>
                 <ul class="nav mt-3">
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Creativity</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Ideas</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Travel</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Art</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Psychology</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Life</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Music</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Books</a></li>
-                  <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">Movie</a></li>
+                  {% for item in categorias %}
+                    <li><a class="btn btn-xs btn-outline-secondary m-1" href="#!">{{item.nombre}}</a></li>
+                  {% endfor %}
                 </ul>
               </div>
               <div class="mt-6">
