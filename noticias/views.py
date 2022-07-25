@@ -223,7 +223,7 @@ class NoticiaView(LoginRequiredMixin, generic.TemplateView):
         context['grupo'] = grupo
         context['sede'] = sede
         context['post_hoy'] = Noticias.objects.filter(modificado__date=hoy).exclude(id=kwargs["pk"])
-        context['categorias'] = Categoria.objects.filter(activo=True)
-        context['subcategorias'] = SubCategoria.objects.filter(activo=True)
+        context['categorias'] = Categoria.objects.filter(activo=True).order_by('nombre')
+        context['subcategorias'] = SubCategoria.objects.filter(activo=True).order_by('nombre')
 
         return context
