@@ -87,6 +87,7 @@ class NoticiasListView(LoginRequiredMixin, generic.ListView):
         return self.render_to_response(
             self.get_context_data(
                 obj = noticias,
+                grupo=request.user.groups.get(user=request.user),
                 sede = self.request.user.profile.sede.nombre_sede
             )
         )
@@ -127,6 +128,7 @@ class NoticiaNew(LoginRequiredMixin, generic.CreateView):
             self.get_context_data(
                 form=form,
                 sedes=sedes,
+                grupo=request.user.groups.get(user=request.user),
                 sede=self.request.user.profile.sede
             )
         )
@@ -188,6 +190,7 @@ class NoticiaEdit(LoginRequiredMixin, generic.UpdateView):
         return self.render_to_response( 
             self.get_context_data(
                 form=form,
+                grupo=request.user.groups.get(user=request.user),
                 sede=self.request.user.profile.sede
             )
         )
