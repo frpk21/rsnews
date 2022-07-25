@@ -23,7 +23,7 @@ from .models import Noticias, Sedes
 from .forms import NoticiasForm
 from catalogos.models import Categoria, SubCategoria
 from noticias.forms import SuscribirseForm
-
+"""
 def CategoriaView(request, pk):
     template_name = 'generales/seccion.html'
 
@@ -72,7 +72,7 @@ def CategoriaView(request, pk):
     context['resultado'] = resultado
     
     return render(request, template_name, context)
-
+"""
 
 
 class NoticiasListView(LoginRequiredMixin, generic.ListView):
@@ -224,6 +224,29 @@ class NoticiaView(LoginRequiredMixin, generic.TemplateView):
         context['sede'] = sede
         context['post_hoy'] = Noticias.objects.filter(modificado__date=hoy).exclude(id=kwargs["pk"])
         context['categorias'] = Categoria.objects.filter(activo=True).order_by('nombre')
-        context['subcategorias'] = SubCategoria.objects.filter(activo=True).order_by('nombre')
+        context['subcategorias'] = SubCategoria.objects.filter(activo=True).order_by('categoria__nombre','nombre')
+
+        return context
+
+
+class NoticiasCategoriaView(LoginRequiredMixin, generic.TemplateView):
+    permission_required='noticias.view_noticias'
+    model=Noticias
+    template_name="noticias/noticia_cat.html"
+    context_object_name="post" 
+    def get_context_data(self, **kwargs):
+        hoy = date.today()
+        mes_actual = hoy.month
+        ano_actual = hoy.year
+        context = super().get_context_data(**kwargs)
+        grupo=self.request.user.groups.get(user=self.request.user)
+        sede=self.request.user.profile.sede
+        context['grupo'] = grupo
+        context['sede'] = sede
+        context['cat_name'] = Categoria.objects.get(id=kwargs["pk"])
+        context['post_cat'] = Noticias.objects.filter(subcategoria__categoria=kwargs["pk"]).order_by('-id')
+        context['post_hoy'] = Noticias.objects.filter(modificado__date=hoy).exclude(subcategoria__categoria=kwargs["pk"])
+        context['categorias'] = Categoria.objects.filter(activo=True).order_by('nombre')
+        context['subcategorias'] = SubCategoria.objects.filter(activo=True).order_by('categoria__nombre','nombre')
 
         return context

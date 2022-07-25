@@ -1,0 +1,74 @@
+{% extends 'base/base.html' %}
+
+{% load auth_extras %} 
+
+{% block contenido %}
+
+<section class="py-3" id="LandingFeatures">
+    <div class="container-fluid"><span class="fas fa-check-double"></span><span>{{grupo}}  -  {{sede.nombre_sede}}</span>
+        <div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+            <h3>{{cat_name}}</h3><br>
+            {% for item in post_cat %}
+                <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 pe-lg-2" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}'>
+                    <div class="hoverbox min-vh-50 h-100 py-6">
+                        <div class="bg-holder rounded" style="background-image:url(item.imagen_destacado.url);">
+                        </div>
+                        <div class="hoverbox-content d-flex bg-black justify-content-center rounded">
+                            <div class="align-self-center px-4 px-lg-6 text-center"><span class="fa fa-signal text-white fs-2 mb-2"></span>
+                            <h4 class="mb-1 text-white">track &amp; analyze</h4>
+                            <p class="px-3 font-sans-serif text-500">Track your daily workout and analyze data to get a better fitness</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2" data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'>
+                <div class="position-relative min-vh-50 h-100">
+                <div class="bg-holder rounded" style="background-image:url(/static/base/assets/img/workout-2.jpg);">
+                </div>
+                <!--/.bg-holder-->
+                <a class="position-absolute bottom-0 end-0 mb-3 me-4" href="#!" data-bigPicture='{"ytSrc":"GJNxNUi6BmA"}'>
+                    <svg width="45" height="45" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 274.19 274.19" data-zanim-svg='{"duration":2,"ease":"CubicBezier","trigger":"scroll"}'>
+                    <defs>
+                        <style>
+                        .play-path {
+                            fill: none;
+                            stroke: #ffffff;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-width: 12px;
+                        }
+                        </style>
+                    </defs>
+                    <g>
+                        <path class="play-path" d="M208.31,29.4A129.12,129.12,0,1,1,137.1,8m-1.48,170.53L199.94,137,104.07,79.46v113"></path>
+                    </g>
+                    </svg></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 pe-lg-2" data-zanim-xs='{"delay":0.3,"animation":"zoom-in"}'>
+                <div class="position-relative min-vh-50 h-100 py-6 d-flex justify-content-center">
+                <div class="bg-holder overlay overlay-0 rounded" style="background-image:url(/static/base/assets/img/workout-8.jpg);">
+                </div>
+                <!--/.bg-holder-->
+
+                <div class="position-relative px-4 px-xl-5 text-center align-self-center w-100"><span class="far fa-compass text-300 fs-4 mb-4"></span>
+                    <h4 class="mb-2 text-white">Explore &amp; compete</h4>
+                    <p class="font-sans-serif text-500">plan your next goal with sparrow segments, routes, maps, clubs, challenges and race courses.</p><a class="btn btn-link text-danger fw-bold" href="#!">checkout pro &xrarr;</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 ps-lg-2" data-zanim-xs='{"delay":0.4,"animation":"zoom-in"}'>
+                <div class="position-relative min-vh-50 h-100 py-6">
+                <div class="bg-holder rounded" style="background-image:url(/static/base/assets/img/workout-3.jpg);">
+                    <div class="yt-video" data-youtube-embed='{"videoId":"wcWmiJw0UIc","startSeconds":0,"endSeconds":60}'></div>
+                </div>
+                <!--/.bg-holder-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}

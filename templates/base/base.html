@@ -83,7 +83,7 @@
                             <div class="col-sm-auto pe-4">
                                 <a class=" false fancy-dropdown-item" href="../pages/404.html"> Todo</a>
                                 {% for item in categorias %}
-                                    <a class=" false fancy-dropdown-item" href="{% url 'noticias:categoria' item.id %}"> {{item.nombre}}</a>
+                                    <a class=" false fancy-dropdown-item" href="{% url 'noticias:postcat_view' item.id %}"> {{item.nombre}}</a>
                                 {% endfor %}
                             </div>
                         </div>
