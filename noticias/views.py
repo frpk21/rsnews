@@ -222,5 +222,6 @@ class NoticiaView(LoginRequiredMixin, generic.TemplateView):
         context['post'] = post
         context['grupo'] = grupo
         context['sede'] = sede
+        context['post_hoy'] = Noticias.objects.filter(modificado__date=hoy)
 
         return context

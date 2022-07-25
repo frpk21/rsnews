@@ -56,9 +56,14 @@
         <div class="col-lg-4 mt-6 mt-lg-0 ps-xl-7">
           <div class="row px-2">
             <div class="col">
-              <h4 class="mt-5">Popular</h4><a class="mt-3 d-inline-block" href="blog-single.html"><img class="rounded w-100 fit-cover" src="../assets/img/blog-1.jpg" alt="" />
-                <h5 class="mt-3">How to take the shame out of self-promotion</h5>
-              </a><a class="mt-4 d-inline-block" href="blog-single.html"><img class="rounded w-100 fit-cover" src="../assets/img/blog-3.jpg" alt="" />
+              <h4 class="mt-5">Hoy</h4>
+              {% for item in post_hoy %}
+                <a class="mt-3 d-inline-block" href="blog-single.html">
+                  <img class="rounded w-100 fit-cover" src="item.imagen_destacado.url" alt="" />
+                  <h5 class="mt-3">{{item.titulo}}</h5>
+                </a>
+              {% endfor %}
+                <a class="mt-4 d-inline-block" href="blog-single.html"><img class="rounded w-100 fit-cover" src="/static/base/assets/img/blog-3.jpg" alt="" />
                 <h5 class="mt-3">Magic. My Macbook has been stolen.</h5>
               </a>
               <div class="mt-6">
