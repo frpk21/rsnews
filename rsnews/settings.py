@@ -93,11 +93,22 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'rsnews',
-        'USER': 'postgres',
-        'PASSWORD': '0268',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    },
+        'USER': 'doadmin',
+        'PASSWORD': 'c56n9esmnqxbquvo',
+        'HOST': 'magazin-do-user-1934793-0.db.ondigitalocean.com',
+        'PORT': '25060',
+        #'SSL': 'requiere',
+        'CONN_MAX_AGE': None
+       },
+
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': 'rsnews',
+    #    'USER': 'postgres',
+    #    'PASSWORD': '0268',
+    #    'HOST': 'localhost',
+    #    'PORT': '5432',
+    #},
 
 }
 
