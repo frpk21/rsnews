@@ -5,11 +5,11 @@
 {% block contenido %}
 
 <section class="py-3" id="LandingFeatures">
-    <h3>{{cat_name}}</h3><br>
+    
     
     {% for item in post_cat %}
         {% if item.urlvideo|length > 0 %}
-            <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2" data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'>
+            <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2" data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'><h3>{{cat_name}}</h3><br>
                 <div class="position-relative min-vh-50 h-100">
                     <div class="bg-holder rounded" style="background-image:url('{{item.imagen_destacado.url}}');">
                     </div>
