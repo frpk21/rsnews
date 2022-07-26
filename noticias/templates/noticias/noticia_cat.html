@@ -71,12 +71,14 @@
     <!-- end of .container-->
 
   </section>
+
+
 <section class="py-3" id="LandingFeatures">
-    <div class="container-fluid"><span class="fas fa-check-double"></span><span>{{grupo}}  -  {{sede.nombre_sede}}</span>
-        <div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
-            <h3>{{cat_name}}</h3><br>
-            {% for item in post_cat %}
-                {% if item.urlvideo|length > 0 %}
+    <h3>{{cat_name}}</h3><br>
+    {% for item in post_cat %}
+        {% if item.urlvideo|length > 0 %}
+            <div class="container-fluid">
+                <div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
                     <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2" data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'>
                         <div class="position-relative min-vh-50 h-100">
                         <div class="bg-holder rounded" style="background-image:url('{{item.imagen_destacado.url}}');">
@@ -101,7 +103,11 @@
                             </svg></a>
                         </div>
                     </div>
-                {% else %}
+                </div>
+            </div>
+        {% else %}
+            <div class="container-fluid"><span class="fas fa-check-double"></span><span>{{grupo}}  -  {{sede.nombre_sede}}</span>
+                <div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
                     <div class="col-lg-6 col-xl-3 mt-3 mt-xl-0 pe-lg-2" data-zanim-xs='{"delay":0.1,"animation":"zoom-in"}'>
                         <div class="hoverbox min-vh-50 h-100 py-6">
                             <div class="bg-holder rounded" style="background-image:url('{{item.imagen_destacado.url}}');">
@@ -114,10 +120,10 @@
                             </div>
                         </div>
                     </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
 </section>
 <script src="/static/base/vendors/popper/popper.min.js"></script>
     <script src="/static/base/vendors/bootstrap/bootstrap.min.js"></script>
