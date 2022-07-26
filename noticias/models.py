@@ -51,6 +51,7 @@ class Noticias(ClaseModelo):
     CHOICES = ((0,'Principal'),(1,'Destacado 1'),(2,'Destacado 2'),(3,'Destacado 3'),(4,'General 4'))
     orden_destacado = models.IntegerField(choices=CHOICES, default=0, blank=False, null=False)
     imagen_destacado = models.FileField("Imagen Destacado", upload_to="imagenes/", blank=True, null=True)
+    video_destacado = models.FileField("Video Destacado", upload_to="videos/", blank=True, null=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,default='')
     fuente = models.CharField(help_text='Fuente noticia', blank=False, null=False, max_length=50, default="INRAI")
     html = models.TextField(max_length=10000, default="", blank=True, null=True)

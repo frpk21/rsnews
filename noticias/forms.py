@@ -43,6 +43,7 @@ class NoticiasForm(forms.ModelForm):
             'fecha_final_publicacion',
             'orden_destacado',
             'imagen_destacado',
+            'video_destacado',
             'archivo_audio',
             'urlvideo',
             'viral',
