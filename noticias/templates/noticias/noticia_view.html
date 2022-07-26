@@ -17,6 +17,14 @@
               </div>
               <h3 class="mt-4">{{post.titulo}}</h3>
               <h4 class="mt-4">{{post.subtitulo}}</h4>
+              {% if post.video_destacado != None  %}
+              <video id="medio" width="700" height="350" controls>
+                <source src="{{post.video_destacado.url}}">
+                Tu navegador no soporta vídeo
+           </video>
+                  
+
+              {% endif %}
               {% if post.imagen_destacado %}
                 <img class="d-block mt-5 w-100" src="{{post.imagen_destacado.url}}" alt="" />
               {% endif %}
