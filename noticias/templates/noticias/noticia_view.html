@@ -18,9 +18,6 @@
               <h3 class="mt-4">{{post.titulo}}</h3>
               <h4 class="mt-4">{{post.subtitulo}}</h4>
               {{post.inrai_video|safe}}
-                  
-
-              {% endif %}
               {% if post.imagen_destacado %}
                 <img class="d-block mt-5 w-100" src="{{post.imagen_destacado.url}}" alt="" />
               {% endif %}
