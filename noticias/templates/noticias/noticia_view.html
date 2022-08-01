@@ -47,9 +47,11 @@
                 </div>
               </div>
               <div class="row justify-center">
-                <a class="btn btn-xs btn-outline-secondary m-1" href="#!">Aprobar</a>
-                <a class="btn btn-xs btn-outline-secondary m-1" href="#!">Rechazar</a>
-                <a class="btn btn-xs btn-outline-secondary m-1" href="#!">Aprobar y Publicar</a>
+                <button class="btn btn-xs btn-outline-secondary m-1" onclick="return ConfirmaAprobar('{{post.id}}','3')"> Aprobar</button>
+                <button class="btn btn-xs btn-outline-secondary m-1" onclick="return ConfirmaAprobar('{{post.id}}','0')"> En Aprobaci&oacute;n</button>
+                <button class="btn btn-xs btn-outline-secondary m-1" onclick="return ConfirmaAprobar('{{post.id}}','1')"> Devolver para Revisi&oacute;n</button>
+                <button class="btn btn-xs btn-outline-secondary m-1" onclick="return ConfirmaAprobar('{{post.id}}','2')"> Rechazado</button>
+                <button class="btn btn-xs btn-outline-secondary m-1" onclick="return ConfirmaAprobar('{{post.id}}','4')"> Aprobar y Publicar</button>
               </div>
             </div>
           </div>
@@ -86,5 +88,74 @@
       </div>
     </div>
 </section>
+
+<script>
+
+  function ConfirmaAprobar(id,e){
+    if (e === '0') {
+      var tit = "CONTENIDO EN APROBCION";
+    }
+    else {
+      if ( e === '1'){ 
+        var tit = "CONTENIDO DEVUELTO PARA REVISION";
+      }
+      else{
+        if ( e === '2'){
+          var tit = "CONTENIDO RECHAZADO";
+        }
+        else{
+          if ( e === '3'){
+            var tit = "CONTENIDO APROBADO";
+          }
+          else{
+            if ( e === '4'){
+              var tit = "CONTENIDO APROBADO Y PUBLICADO";
+            }
+          }
+        }
+      }  
+    }
+
+    swal({
+        title: 'Confirme.',
+        showCancelButton: false,
+        html:"<p>"+tit+"</p>",
+        showCancelButton: true,
+        confirmButtonText: 'Aprobar Contenido ?',
+        cancelButtonText: 'Cancelar',
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false
+    }).then(function(dismiss) {
+        if (dismiss.dismiss === 'cancel') {
+            swal({
+                title: 'Cancelado',
+                text: 'Contenido no actualizado..',
+                type: 'error',
+                confirmButtonClass: "btn btn-info",
+                buttonsStyling: false
+            }).catch(swal.noop);
+        }
+        else {
+          var datos = {'pk':id, 'estado': e};console.log(datos);
+          $.get( "{% url 'noticias:aprobar_post' %}", datos, function( data ) {
+              console.log(data);
+              if (data.errors){
+                  swal({
+                      title: data.errors,
+                      showCancelButton: false,
+                      confirmButtonClass: 'btn btn-success',
+                      //cancelButtonClass: 'btn btn-danger',
+                      buttonsStyling: false
+                  }).catch(swal.noop);
+                }
+              else {
+                location.href="{% url 'noticias:noticia_list' %}";
+              }
+          } );
+        }
+    }).catch(swal.noop);
+  }
+</script>
 
 {% endblock contenido %}

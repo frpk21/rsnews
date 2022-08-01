@@ -18,6 +18,8 @@ urlpatterns = [
     path('news/edit/<int:pk>', views.NoticiaEdit.as_view(), name='noticia_edit'),
     path('news/view/<int:pk>', views.NoticiaView.as_view(), name='noticia_view'),
     path('news/postcat/<int:pk>', views.NoticiasCategoriaView.as_view(), name='postcat_view'),
+    path('news/ap/upd', views.AprobarPostAjax, name='aprobar_post'),
+    path('news/ap/exp', views.InsertPostSonajero, name='insert_post'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
  
