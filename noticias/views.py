@@ -19,8 +19,8 @@ from collections import namedtuple
 from django.http import JsonResponse
 from datetime import datetime, timedelta
 from generales.forms import MesAnoForm
-from .models import Noticias, Sedes
-from .forms import NoticiasForm
+from .models import Categorias_fotos, Noticias, Sedes, Fotos
+from .forms import NoticiasForm, FotosForm, BuscarFotosForm
 from catalogos.models import Categoria, SubCategoria
 from noticias.forms import SuscribirseForm
 
@@ -72,6 +72,29 @@ class NoticiasListView(LoginRequiredMixin, generic.ListView):
             )
         )
 
+def FotosListView(request):
+    template_name = 'noticias/photos.html'
+    hoy = date.today()
+    context = {'hoy': hoy,
+        'tags': '',
+        'categoria': Categorias_fotos.objects.all().order_by('nombre')
+        }
+ 
+    if request.POST.get('buscar'):
+        buscar = (request.POST.get('buscar').upper())
+        template_name="generales/search.html"
+        try:
+            resultado = Fotos.objects.filter(tags__icontains=buscar).order_by('-id')
+        except:
+            resultado = Fotos.objects.filter(tags__icontains=buscar).order_by('-id')
+        context['form_search'] = resultado
+    else:
+        buscar = ''
+        resultado={}
+
+    context['resultado'] = resultado
+
+    return render(request, template_name, context)
 
 class NoticiaNew(LoginRequiredMixin, generic.CreateView):
     permission_required = 'noticias.add_noticias'

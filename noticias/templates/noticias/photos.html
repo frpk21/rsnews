@@ -1,0 +1,94 @@
+{% extends 'base/base.html' %}
+
+{% load auth_extras %} 
+
+{% block contenido %}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+<section class="mt-5 mt-lg-0 py-lg-7" id="page-portfolio">
+    <div class="container">
+      <div class="row mb-5 mb-lg-7">
+        <div class="col-lg-6">
+            <h1 class="text-decoration-underline d-inline fs-4 fs-md-5">Fotograf&iacute;a</h1>
+            <form method="POST" class="post-form">{% csrf_token %}
+                <input type="text" class="border-theme" name="buscar" value='' placeholder="Qué estás buscando?">
+                <button type="submit"><i class="fal fa-search"></i></button>
+            </form>
+        </div>
+      </div>
+      <ul class="nav font-sans-serif mb-2" data-filter-nav="data-filter-nav">
+        <li class="nav-item"><a class="nav-link isotope-nav active" href="#!" data-filter="*">all</a></li>
+        <li class="nav-item"><a class="nav-link isotope-nav" href="#!" data-filter=".photography">photography</a></li>
+        <li class="nav-item"> <a class="nav-link isotope-nav" href="#!" data-filter=".studio">studio</a></li>
+        <li class="nav-item"> <a class="nav-link isotope-nav" href="#!" data-filter=".interior">interior</a></li>
+        <li class="nav-item"> <a class="nav-link isotope-nav" href="#!" data-filter=".illustration">illustration</a></li>
+      </ul>
+      <div class="row g-3 mt-2" id="portfolio-gallery" data-zanim-timeline="{}" data-zanim-trigger="scroll" data-isotope='{"layoutMode":"packery"}'>
+        <div class="col-6 col-md-3 isotope-item interior">
+          <div class="hoverbox rounded overflow-hidden" data-zanim-xs='{"animation":"zoom-in"}'><img class="w-100" src="../assets/img/gallery/03.jpg" alt="" />
+            <div class="hoverbox-content bg-dark d-flex flex-center text-center">
+              <div class="px-4">
+                <h5 class="text-white">Next gen web interface design</h5><a class="btn btn-outline-light btn-xs mt-3" href="../pages/casestudy.html">learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 isotope-item photography"><a href="#!" data-bp="../assets/img/gallery/07-f.jpg" data-bigpicture='{"gallery":"#portfolio-gallery"}' data-caption="my caption"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/07.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.1}' /></a></div>
+        <div class="col-6 col-md-3 isotope-item photography"><a href="#!" data-bp="../assets/img/gallery/09-f.jpg" data-bigpicture='{"gallery":"#portfolio-gallery"}' data-caption="my caption"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/09.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.7}' /></a></div>
+        <div class="col-6 col-md-3 isotope-item studio"><a href="#!" data-bp="../assets/img/gallery/04-f.jpg" data-bigpicture='{"gallery":"#portfolio-gallery"}' data-caption="my caption"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/04.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.4}' /></a></div>
+        <div class="col-6 col-md-3 isotope-item interior">
+          <div class="hoverbox rounded overflow-hidden" data-zanim-xs='{"animation":"zoom-in","delay":0.2}'><img class="w-100 fit-cover" src="../assets/img/gallery/05.jpg" alt="" />
+            <div class="hoverbox-content bg-dark d-flex flex-center text-center">
+              <div class="px-4">
+                <h5 class="text-white">Next gen web interface design</h5><a class="btn btn-outline-light btn-xs mt-3" href="../pages/casestudy.html">learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 isotope-item studio illustration"><a href="#!" data-bp="../assets/img/gallery/06-f.jpg" data-bigpicture='{"gallery":"#portfolio-gallery"}' data-caption="my caption"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/06.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.3}' /></a></div>
+        <div class="col-6 col-md-3 isotope-item photography"><a href="#!" data-bp="../assets/img/gallery/10-f.jpg" data-bigpicture='{"gallery":"#portfolio-gallery"}' data-caption="my caption"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/10.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.5}' /></a></div>
+        <div class="col-6 col-md-3 isotope-item illustration">
+          <div class="position-relative"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/01.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.6}' /><a class="d-flex align-items-end justify-content-end h-100 pb-3 pe-3 position-absolute bottom-0 end-0" href="#!" data-bigpicture='{"ytSrc":"HbAzApdYtdw"}' data-options='{"start":1,"end":64}'>
+              <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 274.19 274.19" data-zanim-svg='{"duration":2,"ease":"CubicBezier","trigger":"scroll"}'>
+                <defs>
+                  <style>
+                    .play-path {
+                      fill: none;
+                      stroke: #ffffff;
+                      stroke-linecap: round;
+                      stroke-linejoin: round;
+                      stroke-width: 12px;
+                    }
+                  </style>
+                </defs>
+                <g>
+                  <path class="play-path" d="M208.31,29.4A129.12,129.12,0,1,1,137.1,8m-1.48,170.53L199.94,137,104.07,79.46v113"></path>
+                </g>
+              </svg></a></div>
+        </div>
+        <div class="col-12 col-sm-6 isotope-item illustration">
+          <div class="swiper-container theme-slider" data-swiper='{"autoplay":{"delay":3000},"loop":true,"slideToClickedSlide":true,"effect":"fade"}'>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img class="w-100 fit-cover rounded" src="../assets/img/gallery/11.jpg" alt="" /></div>
+              <div class="swiper-slide"> <img class="w-100 fit-cover rounded" src="../assets/img/gallery/12.jpg" alt="" /></div>
+            </div>
+            <div class="swiper-nav">
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 isotope-item interior"><a href="#!" data-bp="../assets/img/gallery/02-f.jpg" data-bigpicture='{"gallery":"#portfolio-gallery"}' data-caption="my caption"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/02.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.3}' /></a></div>
+        <div class="col-6 col-md-3 isotope-item photography"><a href="../pages/casestudy.html"><img class="rounded w-100 fit-cover" src="../assets/img/gallery/08.jpg" alt="" data-zanim-xs='{"animation":"zoom-in","delay":0.4}' /></a></div>
+      </div>
+    </div>
+    <!-- end of .container-->
+
+  </section>
+
+
+
+
+{% endblock contenido %}

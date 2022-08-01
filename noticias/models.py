@@ -70,6 +70,39 @@ class Noticias(ClaseModelo):
     class Meta:
         verbose_name_plural = "Noticias"
 
+class Categorias_fotos(ClaseModelo):
+    nombre = models.CharField(
+        max_length=100,
+        help_text='Nombre de la categoría',
+        unique=True,
+    )
+    def __str__(self):
+        return '{}'.format(self.nombre)
+
+    def save(self):
+        self.nombre = self.nombre.upper()
+        super(Categorias_fotos, self).save()
+
+    class Meta:
+        verbose_name_plural = "Categorias Fotos"
+
+class Fotos(ClaseModelo):
+    categoria=models.ForeignKey(Categorias_fotos, on_delete=models.CASCADE, default=0, null=False, blank=False)
+    titulo = models.CharField(blank=False, null=False, max_length=200)
+    foto = models.FileField("Foto", upload_to="fotos/", blank=True, null=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,default='')
+    tags = models.CharField(blank=False, null=False, max_length=100)
+
+    def __str__(self):
+        return '{}-{}'.format(self.titulo, self.autor.profile.sede.nombre_sede)
+
+    def save(self):
+        self.tags = self.tags.upper()
+        super(Fotos, self).save()
+
+    class Meta:
+        verbose_name_plural = "Fotos"
+
 class Publicados(ClaseModelo):
     categoria = models.ForeignKey(Noticias, on_delete=models.CASCADE)
     sede = models.ForeignKey(Sedes, on_delete=models.DO_NOTHING)

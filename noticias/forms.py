@@ -4,7 +4,7 @@ from catalogos.models import Categoria, SubCategoria
 
 from django.forms.models import inlineformset_factory
 
-from noticias.models import Suscribir, Noticias, Publicados
+from noticias.models import Suscribir, Noticias, Publicados, Fotos
 
 from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 
@@ -148,3 +148,73 @@ class NoticiasForm(forms.ModelForm):
     def clean_pdf(self):
         pdf = self.cleaned_data["pdf"]
         return pdf
+
+
+class FotosForm(forms.ModelForm):
+    class Meta:
+        model=Fotos
+        fields = [
+            'categoria',
+            'titulo',
+            'foto',
+            'tags',
+        ]
+    foto = forms.FileField()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+
+    def clean_categoria(self):
+        categoria = self.cleaned_data["categoria"]
+        if not categoria:
+            raise forms.ValidationError("Categoria Requerida.")
+        return categoria
+
+    def clean_titulo(self):
+        titulo = self.cleaned_data["titulo"]
+        if not titulo:
+            raise forms.ValidationError("Titulo Requerido.")
+        return titulo
+
+    def clean_foto(self):
+        foto = self.cleaned_data["foto"]
+        return foto
+
+    def clean_tags(self):
+        tags = self.cleaned_data["tags"]
+        if not tags:
+            raise forms.ValidationError("Tags Requerido.")
+        return tags
+
+class BuscarFotosForm(forms.ModelForm):
+    class Meta:
+        model=Fotos
+        fields = [
+            'categoria',
+            'titulo',
+            'tags',
+        ]
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+        self.fields['categoria'].required = False
+        self.fields['titulo'].required = False
+        self.fields['tags'].required = False
+
+    def clean_categoria(self):
+        categoria = self.cleaned_data["categoria"]
+        return categoria
+
+    def clean_titulo(self):
+        titulo = self.cleaned_data["titulo"]
+        return titulo
+
+    def clean_tags(self):
+        tags = self.cleaned_data["tags"]
+        return tags
