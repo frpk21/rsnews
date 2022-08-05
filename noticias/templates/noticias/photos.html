@@ -19,11 +19,10 @@
         </div>
       </div>
       <ul class="nav font-sans-serif mb-2" data-filter-nav="data-filter-nav">
-        <li class="nav-item"><a class="nav-link isotope-nav active" href="#!" data-filter="*">all</a></li>
-        <li class="nav-item"><a class="nav-link isotope-nav" href="#!" data-filter=".photography">photography</a></li>
-        <li class="nav-item"> <a class="nav-link isotope-nav" href="#!" data-filter=".studio">studio</a></li>
-        <li class="nav-item"> <a class="nav-link isotope-nav" href="#!" data-filter=".interior">interior</a></li>
-        <li class="nav-item"> <a class="nav-link isotope-nav" href="#!" data-filter=".illustration">illustration</a></li>
+        <li class="nav-item"><a class="nav-link isotope-nav active" href="#!" data-filter="*">Todo</a></li>
+        {% for item in categoria %}
+            <li class="nav-item"><a class="nav-link isotope-nav" href="#!" data-filter=".photography">{{item.nombre}}</a></li>
+        {% endfor %}
       </ul>
       <div class="row g-3 mt-2" id="portfolio-gallery" data-zanim-timeline="{}" data-zanim-trigger="scroll" data-isotope='{"layoutMode":"packery"}'>
         <div class="col-6 col-md-3 isotope-item interior">

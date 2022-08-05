@@ -13,49 +13,158 @@
 
         <title>SISTEMA INRAI | Noticias Agc</title>
 
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'base/images/favicon.png' %}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'base/images/favicon.png' %}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'base/images/favicon.png' %}">
-        <link rel="shortcut icon" type="image/x-icon" href="{% static 'base/images/favicon.png' %}">
+
+
+
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/base/image/favicon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/base/image/favicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/base/image/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="/static/base/image/favicon.png">
         <link rel="manifest" href="/static/base/assets/img/favicons/manifest.json">
         <meta name="msapplication-TileImage" content="/static/base/assets/img/favicons/mstile-150x150.png">
         <meta name="theme-color" content="#ffffff">
 
-        <link href="/static/base/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
-        <link href="/static/base/vendors/loaders.css/loaders.min.css" rel="stylesheet" type="text/css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
+        
+        <link href="/static/base/assets/lib/loaders.css/loaders.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=PT+Mono%7cPT+Serif:400,400i%7cLato:100,300,400,700,800,900" rel="stylesheet">
-        <link href="/static/base/assets/css/theme.css" rel="stylesheet" />
-        <link href="/static/base/assets/css/user.css" rel="stylesheet" />
+        <link href="/static/base/assets/lib/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+        <link href="/static/base/assets/lib/owl.carousel/owl.carousel.css" rel="stylesheet">
+        <link href="/static/base/assets/lib/lightbox2/css/lightbox.min.css" rel="stylesheet">
+        <link href="/static/base/assets/css/theme.css" rel="stylesheet">
        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-   
+       
+
+        <link rel="stylesheet" type="text/css" href="/static/base/cristalinas/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/base/cristalinas/assets/css/main.css">
+
+
     </head>
 
-
-    <body class="overflow-hidden-x">
-        <nav class="fancynavbar fancynavbar-expand-lg" data-zanim-lg='{"from":{"opacity":1,"x":70},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-xs='{"from":{"opacity":1,"y":-37},"to":{"opacity":1,"y":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-trigger="scroll" data-exclusive="true">
-            <div class="fancynavbar-togglerbar" data-onscroll-fade-in="data-onscroll-fade-in">
-                <a class="fancynavbar-brand" href="{% url 'generales:home' %}">
-                    <img class="fancynavbar-brand-img" src="/static/base/image/logo-blanco.png" alt="" width="30" height="30" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll" />
-                    <!--You can use icon or text logo as well-->
-                    <!--<span class='fab fa-superpowers fs-3'></span>-->
-                    <!--<span class='logo-sparrow'>S</span>-->
-                </a>
-                <div class="fancynavbar-toggler">
-                    <svg class="fancynavbar-toggler-icon" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.5}' data-zanim-trigger="scroll">
-                        <path id="path-top" d="M20,25c0,0,22,0,30,0c16,0,18.89,40.71-.15,21.75C38.7,35.65,19.9,16.8,19.9,16.8"></path>
-                        <path id="path-middle" d="M20,32h30"></path>
-                        <path id="path-bottom" d="M19.9,46.98c0,0,18.8-18.85,29.95-29.95C68.89-1.92,66,38.78,50,38.78c-8,0-30,0-30,0"></path>
+    <body class="has-sidemenu has-fancynav-top overflow-hidden-x">
+        <nav class="fancynavbar fancynavbar-top" data-zanim-lg='{"from":{"opacity":1,"x":70},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-xs='{"from":{"opacity":1,"y":-43},"to":{"opacity":1,"y":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-trigger="scroll" data-exclusive="true">
+            <div class="fancynavbar-togglerbar bg-black"><a class="fancynavbar-brand" href="{% url 'generales:home' %}"><img class="fancynavbar-brand-img" src="/static/base/image/logo-blanco.png" alt="" width="30" height="30" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll" />
+                <!--You can use icon or text logo as well-->
+                <!--<span class='fab fa-superpowers fs-3'></span>-->
+                <!--<span class='logo-sparrow'>S</span>--></a>
+                <div id="audio-player-radio" class="jp-radioPlayer" data-radio-url="http://149.56.147.197:9635/cristalinaflorencia" data-title="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="">
+                                <div id="player-instance-radio" class="jp-jplayer"></div>
+                                <div class="controls jp-controls-holder">
+                                    <div class="play-pause jp-play pc-play"></div>
+                                    <div class="play-pause jp-pause fa pc-pause" style=" display:none"></div>
+                                </div>
+                                <div class="jp-volume-controls">
+                                    <button class="sound-control pc-volume jp-mute"></button>
+                                    <button class="sound-control pc-mute jp-unmute"></button>
+                                    <div class="jp-volume-bar" style="display: none;">
+                                        <div class="jp-volume-bar-value" style="width: 1.4737%;"></div>
+                                    </div>
+                                </div>
+                                <div class="music_pseudo_bars">
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                    <div class="music_pseudo_bar"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+              <div class="fancynavbar-toggler"><svg class="fancynavbar-toggler-icon" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.5}' data-zanim-trigger="scroll">
+                  <path id="path-top" d="M20,25c0,0,22,0,30,0c16,0,18.89,40.71-.15,21.75C38.7,35.65,19.9,16.8,19.9,16.8"></path>
+                  <path id="path-middle" d="M20,32h30"></path>
+                  <path id="path-bottom" d="M19.9,46.98c0,0,18.8-18.85,29.95-29.95C68.89-1.92,66,38.78,50,38.78c-8,0-30,0-30,0"></path>
+                </svg></div>
+              <div class="fancynavbar-addon" data-zanim-lg='{"from":{"opacity":1,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll"><a class="fancynavbar-addon-item" href="#"><span class="fab fa-twitter"></span></a><a class="fancynavbar-addon-item" href="#languageModal" data-toggle="modal"><span class="text-sans-serif ls font-weight-black fs--1 d-block">EN</span></a></div>
+            </div>
+            
+            <div class="fancynavbar-collapse">
+                <ul class="fancynavbar-nav">
+                    <li><img class="fancynavbar-brand-img" src="/static/base/image/logo-inrainews-blanco-400px.png" alt="" width="160" /></li>
+                    <li><p>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . . . . . . . . . . . .. . . . . . . . . . . . . .</p></li>
+                    <li class="fancynav-item fancy-dropdown">
+                        <a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)">
+                            <span class="fancynav-link-content">Contenido Digital</span>
+                        </a>
+                        <div class="fancy-dropdown-menu">
+                        <div class="row pb-4 pt-3">
+                            <div class="col-auto">
+                                <a class=" false fancy-dropdown-item" href="{% url 'noticias:noticia_list' %}"> Noticias</a>
+                                    <a class=" false fancy-dropdown-item" href=""> Podcast</a>
+                                    <a class=" false fancy-dropdown-item" href="{% url 'noticias:fotos_list' %}"> Fotograf&iacute;a</a>
+                                    <a class=" false fancy-dropdown-item" href=""> Pauta Radio</a>
+                                    <a class=" false fancy-dropdown-item" href=""> Pauta Digital</a>
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">pages</span></a>
+                        <div class="fancy-dropdown-menu">
+                        <div class="row pb-4 pt-3">
+                            <div class="col-sm-auto pr-4"><a class="fancy-dropdown-item" href="page-404.html">404</a><a class="fancy-dropdown-item" href="page-about.html">About</a><a class="fancy-dropdown-item" href="page-blog.html">Blog</a><a class="fancy-dropdown-item" href="page-blog-single.html">Blog single</a><a class="fancy-dropdown-item" href="page-cart.html">Cart</a><a class="fancy-dropdown-item" href="page-casestudy.html">Casestudy</a><a class="fancy-dropdown-item" href="page-coming-soon.html">Coming soon</a><a class="fancy-dropdown-item" href="page-contact.html">Contact</a><a class="fancy-dropdown-item" href="page-one-page.html">One page</a><a class="fancy-dropdown-item" href="page-portfolio.html">Portfolio</a></div>
+                            <div class="col-sm-auto pr-4"><a class="fancy-dropdown-item" href="page-profile.html">Profile</a><a class="fancy-dropdown-item" href="page-rtl.html">RTL</a><a class="fancy-dropdown-item" href="page-services.html">Services</a><a class="fancy-dropdown-item" href="page-shop.html">Shop</a><a class="fancy-dropdown-item" href="page-signin.html">Signin</a><a class="fancy-dropdown-item" href="page-signup.html">Signup</a><a class="fancy-dropdown-item" href="page-product-single.html">Product single</a><a class="fancy-dropdown-item" href="page-split-static.html">Split static</a><a class="fancy-dropdown-item" href="page-split-youtube.html">Split youtube</a><a class="fancy-dropdown-item" href="page-starter.html">Starter</a></div>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">components</span></a>
+                        <div class="fancy-dropdown-menu">
+                        <div class="row pb-2 pt-3">
+                            <div class="col-sm-auto mb-3">
+                            <div class="row">
+                                <div class="col-sm-auto pr-4"><a class="fancy-dropdown-item text-white font-weight-black ls text-uppercase fs--1 mb-1" href="JavaScript:void(0)">Sparrow</a><a class="fancy-dropdown-item" href="components/sparrow/accordion.html">Accordion</a><a class="fancy-dropdown-item" href="components/sparrow/backgrounds.html">Backgrounds</a><a class="fancy-dropdown-item" href="components/sparrow/borders.html">Borders</a><a class="fancy-dropdown-item" href="components/sparrow/carousel.html">Carousel</a><a class="fancy-dropdown-item" href="components/sparrow/colors.html">Colors</a><a class="fancy-dropdown-item" href="components/sparrow/cookie-notice.html">Cookie notice</a><a class="fancy-dropdown-item" href="components/sparrow/countdown.html">Countdown</a><a class="fancy-dropdown-item" href="components/sparrow/countup.html">Countup</a><a class="fancy-dropdown-item" href="components/sparrow/fancybox.html">Fancybox</a><a class="fancy-dropdown-item" href="components/sparrow/fancynav.html">Fancynav</a><a class="fancy-dropdown-item" href="components/sparrow/fancyscroll.html">Fancyscroll</a><a class="fancy-dropdown-item" href="components/sparrow/fancytabs.html">Fancytabs</a></div>
+                                <div class="col-sm-auto pr-4"><a class="fancy-dropdown-item" href="components/sparrow/filter.html">Filter</a><a class="fancy-dropdown-item" href="components/sparrow/forms.html">Forms</a><a class="fancy-dropdown-item" href="components/sparrow/googlemap.html">Googlemap</a><a class="fancy-dropdown-item" href="components/sparrow/icons.html">Icons</a><a class="fancy-dropdown-item" href="components/sparrow/inline-player.html">Inline player</a><a class="fancy-dropdown-item" href="components/sparrow/lightbox.html">Lightbox</a><a class="fancy-dropdown-item" href="components/sparrow/masonry.html">Masonry</a><a class="fancy-dropdown-item" href="components/sparrow/parallax.html">Parallax</a><a class="fancy-dropdown-item" href="components/sparrow/progressbar.html">Progressbar</a><a class="fancy-dropdown-item" href="components/sparrow/spacing.html">Spacing</a><a class="fancy-dropdown-item" href="components/sparrow/typed-text.html">Typed text</a><a class="fancy-dropdown-item" href="components/sparrow/typography.html">Typography</a><a class="fancy-dropdown-item" href="components/sparrow/zanimation.html">Zanimation</a></div>
+                            </div>
+                            </div>
+                            <div class="col-sm-auto pr-3 mb-3"><a class="fancy-dropdown-item text-white font-weight-black ls text-uppercase fs--1 mb-1" href="JavaScript:void(0)">Bootstrap</a><a class="fancy-dropdown-item" href="components/bootstrap/badges.html">Badges</a><a class="fancy-dropdown-item" href="components/bootstrap/buttons.html">Buttons</a><a class="fancy-dropdown-item" href="components/bootstrap/cards.html">Cards</a><a class="fancy-dropdown-item" href="components/bootstrap/forms.html">Forms</a><a class="fancy-dropdown-item" href="components/bootstrap/modals.html">Modals</a><a class="fancy-dropdown-item" href="components/bootstrap/navbar.html">Navbar</a><a class="fancy-dropdown-item" href="components/bootstrap/scrollspy.html">Scrollspy</a><a class="fancy-dropdown-item" href="components/bootstrap/sizing.html">Sizing</a><a class="fancy-dropdown-item" href="components/bootstrap/tables.html">Tables</a><a class="fancy-dropdown-item" href="components/bootstrap/tabs.html">Tabs</a><a class="fancy-dropdown-item" href="components/bootstrap/tooltips.html">Tooltips</a></div>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">documentation</span></a>
+                        <div class="fancy-dropdown-menu">
+                        <div class="row pb-4 pt-3">
+                            <div class="col-auto"><a class="fancy-dropdown-item" href="documentation/getting-started.html">Getting started</a><a class="fancy-dropdown-item" href="documentation/file-structure.html">File structure</a><a class="fancy-dropdown-item" href="documentation/customization.html">Customization</a><a class="fancy-dropdown-item" href="documentation/gulp.html">Gulp</a><a class="fancy-dropdown-item" href="documentation/RTL.html">RTL</a><a class="fancy-dropdown-item" href="documentation/plugins.html">Plugins</a><a class="fancy-dropdown-item" href="documentation/changelog.html">Changelog</a></div>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="fancynav-item"><a class="fancynav-link" href="page-portfolio.html"><span class="fancynav-link-content">portfolio</span></a></li>
+                    <li class="fancynav-item"><a class="fancynav-link" href="page-contact.html"><span class="fancynav-link-content">contact</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!--
+        <nav class="fancynavbar fancynavbar-top" data-zanim-lg='{"from":{"opacity":1,"x":70},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-xs='{"from":{"opacity":1,"y":-43},"to":{"opacity":1,"y":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-trigger="scroll" data-exclusive="true">
+            <div class="fancynavbar-togglerbar bg-black"><a class="fancynavbar-brand" href="{% url 'generales:home' %}"><img class="fancynavbar-brand-img" src="/static/base/image/logo-blanco.png" alt="" width="30" height="30" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll" />
+                <div class="fancynavbar-toggler"><svg class="fancynavbar-toggler-icon" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.5}' data-zanim-trigger="scroll">
+                    <path id="path-top" d="M20,25c0,0,22,0,30,0c16,0,18.89,40.71-.15,21.75C38.7,35.65,19.9,16.8,19.9,16.8"></path>
+                    <path id="path-middle" d="M20,32h30"></path>
+                    <path id="path-bottom" d="M19.9,46.98c0,0,18.8-18.85,29.95-29.95C68.89-1.92,66,38.78,50,38.78c-8,0-30,0-30,0"></path>
                     </svg>
                 </div>
-                <div class="fancynavbar-addon" data-zanim-lg='{"from":{"opacity":1,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll">
-                    <a class="fancynavbar-addon-item" href="#count" data-bs-toggle="modal">
-                        <span class="far fa-user"></span>
-                    </a>
-                </div>
+                <div class="fancynavbar-addon" data-zanim-lg='{"from":{"opacity":1,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll"><a class="fancynavbar-addon-item" href="#"><span class="fab fa-twitter"></span></a><a class="fancynavbar-addon-item" href="#languageModal" data-toggle="modal"><span class="text-sans-serif ls font-weight-black fs--1 d-block">EN</span></a></div>
             </div>
+
+
             <div class="fancynavbar-collapse">
                 <ul class="fancynavbar-nav">
                     <li><img class="fancynavbar-brand-img" src="/static/base/image/logo-inrainews-blanco-400px.png" alt="" width="160" /></li>
@@ -127,13 +236,13 @@
                 <li class="fancynav-item"><a class="fancynav-link" href="../pages/contact.html"><span class="fancynav-link-content">contacto</span></a></li>
                 </ul>
             </div>
-        </nav>
+        </nav>-->
         <!-- ===============================================-->
         <!--    Main Content-->
         <!-- ===============================================-->
         <main class="main min-vh-100" id="top">
             <!-- ============================================-->
-            <!-- Preloader ==================================-->
+            <!-- Preloader ==================================
             <div class="preloader" id="preloader">
                 <div class="loader">
                 <div class="line-scale-pulse-out-rapid">
@@ -144,7 +253,7 @@
                     <div> </div>
                 </div>
                 </div>
-            </div>
+            </div>-->
             <!-- ============================================-->
             <!-- End of Preloader ===========================-->
 
@@ -212,9 +321,20 @@
     <script src="/static/base/vendors/gsap/gsap.js"></script>
     <script src="/static/base/vendors/gsap/customEase.js"></script>
     <script src="/static/base/vendors/gsap/drawSVGPlugin.js"></script>
-    <script src="/static/base/vendors/progressbar/progressbar.min.js"></script>
+   
+
+
+
+    <script src="/static/base/cristalinas/assets/js/jplayer/jquery.jplayer.min.js"></script>
+<script src="/static/base/cristalinas/assets/js/jplayer/jplayer.playlist.min.js"></script>
+<script src="/static/base/cristalinas/assets/js/jquery.flexslider-min.js"></script>
+<script src="/static/base/cristalinas/assets/js/owl.carousel.min.js"></script>
+<script src="/static/base/cristalinas/assets/js/jquery.bxslider.min.js"></script>
+<script src="/static/base/cristalinas/assets/js/main.js"></script> 
+
 
     <!--  Plugin for Sweet Alert -->
+    
     <script src="/static/base/plugins/js/sweetalert2.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-122907869-1"></script>
@@ -227,6 +347,7 @@
       gtag('js', new Date());
       gtag('config', 'UA-122907869-1');
     </script>-->
+    <script src="/static/base/vendors/progressbar/progressbar.min.js"></script>
     <script src="/static/base/assets/js/theme.js"></script>
   </body>
 
